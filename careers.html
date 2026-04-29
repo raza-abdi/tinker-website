@@ -1,0 +1,949 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinker | Careers</title>
+    <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --nav-bg: rgba(255, 255, 255, 0.65);
+            --text-color: #000000;
+            --hover-color: #0099FD;
+            --glass-blur: 50px;
+            --accent1: #0099FD;
+            --accent2: #30C70B;
+            --accent3: #FEC000;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        /* Ambient background for glassmorphism */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle, rgba(0,153,253,0.03) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(48,199,11,0.03) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+
+        /* Navbar Styling */
+        .navbar-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 2rem;
+            z-index: 10;
+            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            opacity: 0;
+            transform: translateY(-50px) scale(0.9);
+        }
+
+        @media (min-width: 769px) {
+            .navbar-wrapper {
+                box-sizing: border-box;
+                padding-left: 120px;
+                padding-right: 120px;
+            }
+
+            .navbar {
+                max-width: min(1100px, calc(100vw - 420px));
+            }
+        }
+
+        @keyframes smoothPopDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .navbar {
+            backdrop-filter: blur(50px) saturate(250%);
+            -webkit-backdrop-filter: blur(50px) saturate(250%);
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.07), 
+                0 15px 35px rgba(0, 0, 0, 0.03),
+                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
+                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: visible;
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            will-change: width, height, border-radius, transform;
+        }
+
+        .nav-item {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: var(--hover-color);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.03);
+            border-radius: 30px;
+        }
+
+        /* Logo Glass Container */
+        .logo-glass {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            backdrop-filter: blur(50px) saturate(250%);
+            -webkit-backdrop-filter: blur(50px) saturate(250%);
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.07), 
+                0 15px 35px rgba(0, 0, 0, 0.03),
+                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
+                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.1s;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            text-decoration: none;
+        }
+
+        .logo-glass:hover {
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .logo-glass img {
+            height: 48px;
+            width: auto;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+            transform: scale(1.15);
+        }
+
+        /* Main Content */
+        .careers-main {
+            position: relative;
+            z-index: 1;
+            padding-top: 7.5rem;
+            min-height: 100vh;
+        }
+
+        .careers-wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section 1: Hero with Career GIF */
+        .hero-section {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0, 153, 253, 0.02), rgba(48, 199, 11, 0.02));
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-gif-container {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-gif {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            mix-blend-mode: multiply;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(0, 179, 255, 0.1) 0%, 
+                rgba(0, 255, 153, 0.08) 50%, 
+                rgba(254, 192, 0, 0.06) 100%);
+            opacity: 0.6;
+            mix-blend-mode: screen;
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: linear-gradient(90deg, rgba(0, 153, 253, 0.1), rgba(48, 199, 11, 0.08));
+            color: var(--accent1);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .hero-title {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin: 0 0 1.5rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientScroll 3s linear infinite;
+        }
+
+        @keyframes gradientScroll {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.7);
+            margin: 0 0 2rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            padding: 2px;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+            background-size: 200% auto;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: gradientScroll 2s linear infinite;
+            z-index: -1;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 153, 253, 0.3);
+        }
+
+        /* Section 2: Join Our Mission with Robot */
+        .mission-section {
+            padding: 6rem 2rem;
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .mission-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission-panel {
+            padding: 3rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(120deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
+            background-size: 200% auto;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: gradientScroll 3s linear infinite;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .section-title {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            margin: 0 0 1.5rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientScroll 3s linear infinite;
+        }
+
+        .mission-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .role-card {
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background-size: 200% auto;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .role-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 153, 253, 0.2);
+        }
+
+        .role-card:hover::before {
+            opacity: 0.8;
+            animation: gradientScroll 2s linear infinite;
+        }
+
+        .role-title {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem;
+            color: #0a0a0a;
+        }
+
+        .role-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.6);
+            margin: 0;
+        }
+
+        .robot-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .robot-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .robot-image {
+            width: 280px;
+            height: 280px;
+            object-fit: contain;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+            animation: floatRobot 6s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
+        }
+
+        @keyframes floatRobot {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .robot-arc {
+            position: absolute;
+            right: 20px;
+            top: 30%;
+            width: 320px;
+            height: 200px;
+            opacity: 0.4;
+            transform: rotate(-15deg);
+            animation: arcMorph 8s ease-in-out infinite;
+        }
+
+        @keyframes arcMorph {
+            0%, 100% { transform: rotate(-15deg) scale(1); opacity: 0.4; }
+            50% { transform: rotate(-10deg) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Section 3: Principles */
+        .principles-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 153, 253, 0.02), rgba(48, 199, 11, 0.02));
+            border-radius: 24px;
+            margin-bottom: 4rem;
+        }
+
+        .principles-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .principles-content h2 {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 700;
+            margin: 0 0 1.5rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientScroll 3s linear infinite;
+        }
+
+        .principles-description {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(0, 0, 0, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .verses-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .verse-card {
+            padding: 1.5rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verse-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
+            background-size: 200% auto;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .verse-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 153, 253, 0.15);
+        }
+
+        .verse-card:hover::before {
+            opacity: 0.6;
+            animation: gradientScroll 2s linear infinite;
+        }
+
+        .verse-reference {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent1);
+            margin: 0 0 0.5rem;
+        }
+
+        .verse-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.7);
+            margin: 0;
+            font-style: italic;
+        }
+
+        .principles-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .principles-image:hover {
+            transform: scale(1.05);
+        }
+
+        .interpretation-panel {
+            padding: 2rem;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            margin-top: 2rem;
+        }
+
+        .interpretation-title {
+            font-family: 'Baloo 2', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            background: linear-gradient(90deg, var(--accent1), var(--accent2));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientScroll 3s linear infinite;
+        }
+
+        .interpretation-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(0, 0, 0, 0.7);
+            margin: 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 980px) {
+            .mission-container,
+            .principles-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .robot-container {
+                width: 100%;
+                height: 300px;
+                margin-top: 2rem;
+            }
+
+            .robot-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .principles-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 60vh;
+                padding: 2rem 1rem;
+            }
+
+            .mission-section,
+            .principles-section {
+                padding: 3rem 1rem;
+            }
+
+            .mission-panel {
+                padding: 2rem;
+            }
+
+            .roles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-glass {
+                top: 1.5rem;
+                left: 1.5rem;
+                width: 56px;
+                height: 56px;
+            }
+
+            .logo-glass img {
+                height: 38px;
+            }
+
+            .navbar-wrapper {
+                padding-top: 1.5rem;
+            }
+        }
+
+        /* Cursor Sparkle System */
+        .cursor-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            animation: sparkleFade 1.2s ease-out forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
+            40% { opacity: 1; transform: translate(-50%, -50%) scale(var(--scale-factor)) rotate(45deg); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(90deg); }
+        }
+
+        .star-shape {
+            width: 4px;
+            height: 4px;
+            background: currentColor;
+            position: relative;
+            animation: starPulse 0.6s ease-in-out infinite;
+        }
+
+        .star-shape::before,
+        .star-shape::after {
+            content: '';
+            position: absolute;
+            background: currentColor;
+            border-radius: 50%;
+        }
+
+        .star-shape::before {
+            width: 100%;
+            height: 100%;
+            top: -6px;
+            left: 0;
+        }
+
+        .star-shape::after {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -6px;
+        }
+
+        @keyframes starPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .sparkle-shine {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: shineBlink 0.4s ease-in-out infinite;
+        }
+
+        @keyframes shineBlink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+    <script src="components/inject-components.js"></script>
+
+</head>
+<body>
+    <div id="global-header"></div>
+
+    <main class="careers-main">
+        <div class="careers-wrap">
+            <!-- Section 1: Hero with Career GIF -->
+            <section class="hero-section">
+                <div class="hero-gif-container">
+                    <img src="src/assets/images/career.gif" alt="Career Animation" class="hero-gif">
+                    <div class="gradient-overlay"></div>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-kicker">Now Hiring</div>
+                    <h1 class="hero-title">Build Future of Learning</h1>
+                    <p class="hero-description">
+                        Join our mission to transform education through AI-powered personalized learning. 
+                        We're looking for passionate innovators who believe in power of technology 
+                        to create meaningful educational experiences.
+                    </p>
+                    <a href="#mission" class="hero-cta">Explore Opportunities</a>
+                </div>
+            </section>
+
+            <!-- Section 2: Join Our Mission with Robot -->
+            <section id="mission" class="mission-section">
+                <div class="mission-container">
+                    <div class="mission-content">
+                        <div class="mission-panel">
+                            <h2 class="section-title">Join Our Mission</h2>
+                            <p class="mission-description">
+                                We believe in purpose-driven work that prioritizes student growth, ethical AI, 
+                                and measurable impact. Our team combines deep expertise in education, technology, 
+                                and design to create solutions that truly matter.
+                            </p>
+                            <div class="roles-grid">
+                                <div class="role-card">
+                                    <h3 class="role-title">Senior ML Engineer</h3>
+                                    <p class="role-description">Ship models that improve student learning outcomes through advanced AI.</p>
+                                </div>
+                                <div class="role-card">
+                                    <h3 class="role-title">Product Designer</h3>
+                                    <p class="role-description">Design experiences that drive measurable learning engagement.</p>
+                                </div>
+                                <div class="role-card">
+                                    <h3 class="role-title">Curriculum Engineer</h3>
+                                    <p class="role-description">Create scaffolded learning progressions aligned to pedagogy.</p>
+                                </div>
+                                <div class="role-card">
+                                    <h3 class="role-title">Platform Engineer</h3>
+                                    <p class="role-description">Build resilient services for real-time learning experiences.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="robot-container">
+                        <div class="robot-wrapper">
+                            <svg class="robot-arc" width="420" height="260" viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#0099FD" />
+                                        <stop offset="33%" stop-color="#30C70B" />
+                                        <stop offset="66%" stop-color="#FEC000" />
+                                        <stop offset="100%" stop-color="#0099FD" />
+                                    </linearGradient>
+                                </defs>
+                                <path d="M10 220 C120 10 300 10 410 220" stroke="url(#arcGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <img src="src/assets/robot.png" alt="AI Robot" class="robot-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Principles -->
+            <section class="principles-section">
+                <div class="principles-container">
+                    <div class="principles-content">
+                        <h2>Our Guiding Principles</h2>
+                        <p class="principles-description">
+                            Our work is grounded in enduring principles that form foundation of integrity, 
+                            discipline, and collective responsibility. These values guide every decision we make 
+                            and every product we build.
+                        </p>
+                        <div class="verses-grid">
+                            <div class="verse-card">
+                                <h3 class="verse-reference">Surah An‑Najm (53:39)</h3>
+                                <p class="verse-text">"And that there is not for man except that [good] for which he strives."</p>
+                            </div>
+                            <div class="verse-card">
+                                <h3 class="verse-reference">Surah Al‑Hujurat (49:11)</h3>
+                                <p class="verse-text">"O believers! Do not let some ˹men˺ ridicule others... How evil it is to act rebelliously after having faith!"</p>
+                            </div>
+                            <div class="verse-card">
+                                <h3 class="verse-reference">Surah As‑Saff (61:2)</h3>
+                                <p class="verse-text">"Why do you say what you do not do?"</p>
+                            </div>
+                            <div class="verse-card">
+                                <h3 class="verse-reference">Surah Al‑Mu'minun (23:8)</h3>
+                                <p class="verse-text">"Those who are true to their trusts and covenants."</p>
+                            </div>
+                            <div class="verse-card">
+                                <h3 class="verse-reference">Surah Ash‑Shuraa (42:19)</h3>
+                                <p class="verse-text">"Allah is Ever Kind to His servants... And He is All‑Powerful"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="principles-sidebar">
+                        <img src="src/assets/sales.png" alt="Team Collaboration" class="principles-image">
+                        <div class="interpretation-panel">
+                            <h3 class="interpretation-title">Our Interpretation</h3>
+                            <p class="interpretation-text">
+                                These principles inform our code of conduct, product integrity, and collaborative practices — 
+                                emphasizing accountability, humility, and measurable contribution to education.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                const rect = heroSection.getBoundingClientRect();
+                if (rect.bottom > 0 && rect.top < window.innerHeight) {
+                    const speed = 0.5;
+                    const yPos = -(scrolled * speed);
+                    heroSection.style.transform = `translateY(${yPos}px)`;
+                }
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.role-card, .verse-card, .mission-panel').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+    <div id="global-footer"></div>
+
+</body>
+</html>
