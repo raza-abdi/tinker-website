@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tinker | Help and FAQs</title>
+    <!-- CSP baseline for static hosting. Production rollout: move this policy to HTTP headers,
+         run Report-Only first, then enforce nonce-based script-src once server/edge nonce injection is available. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests">
     <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -11,14 +14,17 @@
         body { background: #ffffff; font-family: 'Montserrat', sans-serif; }
     </style>
     <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/help-faqs.css">
     <script src="src/js/global-nav.js" defer></script>
+    <script src="src/js/security/safe-dom.js" defer></script>
+    <script src="src/js/help-faqs.js" defer></script>
 
 </head>
 <body>
     <!-- Separate Logo Container -->
     <a href="index.html" class="logo-glass">
         <!-- SVG Logo -->
-        <img src="src/assets/images/logo.svg" alt="Tinker Logo" onerror="this.onerror=null; console.error('SVG not found')">
+        <img src="src/assets/images/logo.svg" alt="Tinker Logo">
     </a>
 
     <!-- Behavioral CTA System (Right side space) -->
@@ -179,6 +185,125 @@
             </div>
         </nav>
     </div>
+
+    <main class="faq-page" id="faqTop">
+        <div class="faq-progress" aria-hidden="true"><span class="faq-progress__bar"></span></div>
+        <a href="index.html" id="faqReturnButton" class="faq-return-link" hidden>Back to Home</a>
+
+        <section class="faq-hero faq-reveal" id="faq-hero" aria-labelledby="faq-hero-title">
+            <div class="faq-hero__bg" aria-hidden="true"></div>
+            <div class="faq-hero__inner">
+                <p class="faq-kicker">Help Centre</p>
+                <h1 id="faq-hero-title" class="faq-title">Find what you need. Or we route you precisely.</h1>
+                <p class="faq-lede">Resolve questions quickly with persona-specific guidance, product help, and support escalation when needed.</p>
+                <form class="faq-search" id="faqSearchForm" novalidate>
+                    <label for="faqSearchInput" class="sr-only">Search help articles and FAQs</label>
+                    <input id="faqSearchInput" name="q" type="search" autocomplete="off" placeholder="Search help articles, FAQs, and guides">
+                    <button type="submit">Search</button>
+                </form>
+                <div id="faqSearchSuggestions" class="faq-search-suggestions" role="listbox" aria-label="Search suggestions"></div>
+                <p id="faqNoResultHint" class="faq-no-result" hidden>No direct result found. Use the support launcher on the right to talk to support, submit a problem, or request article creation.</p>
+            </div>
+        </section>
+
+        <section class="faq-section faq-reveal" id="faq-categories" aria-labelledby="faq-categories-title">
+            <div class="faq-section__contain">
+                <h2 id="faq-categories-title" class="faq-h2">Categories for the Help Center</h2>
+                <div id="faqCategoryGrid" class="faq-category-grid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="faq-section faq-reveal" id="faq-persona" aria-labelledby="faq-persona-title">
+            <div class="faq-section__contain">
+                <h2 id="faq-persona-title" class="faq-h2">Common FAQs by persona</h2>
+                <div class="faq-persona-tabs" role="tablist" aria-label="FAQ personas">
+                    <button class="faq-tab is-active" role="tab" aria-selected="true" data-persona="executives">Executives &amp; Decision Makers</button>
+                    <button class="faq-tab" role="tab" aria-selected="false" data-persona="teachers">Teachers &amp; Admins</button>
+                    <button class="faq-tab" role="tab" aria-selected="false" data-persona="parents">Parents &amp; Students</button>
+                    <button class="faq-tab" role="tab" aria-selected="false" data-persona="general">General FAQs</button>
+                </div>
+                <div id="faqAccordionList" class="faq-accordion-list" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="faq-section faq-reveal" id="faq-products" aria-labelledby="faq-products-title">
+            <div class="faq-section__contain">
+                <h2 id="faq-products-title" class="faq-h2">Product help by ecosystem</h2>
+                <div id="faqProductCards" class="faq-product-cards" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="faq-section faq-reveal" id="faq-domains" aria-labelledby="faq-domains-title">
+            <div class="faq-section__contain">
+                <h2 id="faq-domains-title" class="faq-h2">Knowledge domains</h2>
+                <div id="faqDomainGrid" class="faq-domain-grid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section class="faq-section faq-reveal" id="faq-submit-problem" aria-labelledby="faq-submit-problem-title">
+            <div class="faq-section__contain">
+                <h2 id="faq-submit-problem-title" class="faq-h2">Submit a problem</h2>
+                <p class="faq-intro">If a question remains unresolved, submit it once. Repeated unresolved intent will be flagged for article creation in the CMS workflow.</p>
+                <div class="faq-submit-panel">
+                    <form id="faqProblemForm" class="faq-problem-form" novalidate>
+                        <div class="faq-form-row faq-form-row--two">
+                            <div class="faq-field">
+                                <label for="faqPersonaInput">Persona</label>
+                                <select id="faqPersonaInput" name="persona" class="faq-select" required>
+                                    <option value="executives">Executives &amp; Decision Makers</option>
+                                    <option value="teachers">Teachers &amp; Admins</option>
+                                    <option value="parents">Parents &amp; Students</option>
+                                    <option value="general">General</option>
+                                </select>
+                            </div>
+                            <div class="faq-field">
+                                <label for="faqProductInput">Product</label>
+                                <select id="faqProductInput" name="product" class="faq-select" required>
+                                    <option value="" selected disabled>Select product</option>
+                                    <option value="tinkerworld">tinker World</option>
+                                    <option value="tinkerkids">tinker Kids</option>
+                                    <option value="platform">Platform / App</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="faq-field faq-field--full">
+                            <label for="faqIssueInput">Issue description</label>
+                            <textarea id="faqIssueInput" name="issue" rows="4" maxlength="1200" required placeholder="Describe the issue clearly..."></textarea>
+                        </div>
+                        <div class="faq-form-row faq-form-row--two">
+                            <div class="faq-field">
+                                <label for="faqAttachmentInput">Optional attachment URL</label>
+                                <input id="faqAttachmentInput" name="attachmentUrl" class="faq-input" type="url" maxlength="300" placeholder="https://...">
+                            </div>
+                            <div class="faq-field">
+                                <span class="faq-label" id="faqFileLabel">File upload (placeholder)</span>
+                                <label class="faq-file-drop" for="faqFilePlaceholder">
+                                    <span class="faq-file-drop__cta">Browse or drop file here</span>
+                                    <span class="faq-file-drop__filename" aria-live="polite"></span>
+                                    <span class="faq-file-drop__hint">PNG, JPG, PDF, DOC, DOCX or TXT · max size set by CMS</span>
+                                    <input id="faqFilePlaceholder" class="faq-file-drop__native" name="filePlaceholder" type="file" accept=".png,.jpg,.jpeg,.pdf,.doc,.docx,.txt" aria-labelledby="faqFileLabel">
+                                </label>
+                                <p class="faq-field-hint">Upload endpoint will be connected with admin CMS pipeline.</p>
+                            </div>
+                        </div>
+                        <div class="faq-field faq-field--full faq-field--actions">
+                            <button type="submit" class="faq-submit-btn">Submit problem</button>
+                            <p id="faqProblemStatus" class="faq-problem-status" aria-live="polite"></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <aside id="faqCantFindLauncher" class="faq-cant-find" aria-label="Can't find options">
+            <button id="faqCantFindToggle" class="faq-cant-find__toggle" type="button" aria-expanded="false">Can't find what you're looking for?</button>
+            <div class="faq-cant-find__panel" id="faqCantFindPanel">
+                <a href="contact.html?topic=technical" data-action="contact-support">Talk to Support</a>
+                <a href="#faq-submit-problem" data-action="submit-problem">Submit a Problem</a>
+                <a href="#" data-action="request-article">Request Article Creation</a>
+            </div>
+        </aside>
+    </main>
     <!-- Footer Section -->
     <footer class="site-footer" id="siteFooter">
         <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -244,7 +369,7 @@
 
             <div class="footer-bottom-grid reveal-item" style="transition-delay: 0.4s">
                 <div class="footer-bottom-left">
-                    <img src="src/assets/images/Tinker Logo-17.svg" class="footer-logo-img" alt="Tinker Logo" style="height: 150px; width: auto; margin-left: -30px; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    <img src="src/assets/images/Tinker Logo-17.svg" class="footer-logo-img" alt="Tinker Logo" style="height: 150px; width: auto; margin-left: -30px; transition: transform 0.4s ease;">
                     
                 </div>
                 <div class="footer-bottom-links">

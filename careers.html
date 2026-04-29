@@ -5,792 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tinker | Careers</title>
     <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --nav-bg: rgba(255, 255, 255, 0.65);
-            --text-color: #000000;
-            --hover-color: #0099FD;
-            --glass-blur: 50px;
-            --accent1: #0099FD;
-            --accent2: #30C70B;
-            --accent3: #FEC000;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        /* Ambient background for glassmorphism */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle, rgba(0,153,253,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(48,199,11,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        /* Navbar Styling */
-        .navbar-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding-top: 2rem;
-            z-index: 10;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            opacity: 0;
-            transform: translateY(-50px) scale(0.9);
-        }
-
-        @media (min-width: 769px) {
-            .navbar-wrapper {
-                box-sizing: border-box;
-                padding-left: 120px;
-                padding-right: 120px;
-            }
-
-            .navbar {
-                max-width: min(1100px, calc(100vw - 420px));
-            }
-        }
-
-        @keyframes smoothPopDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .navbar {
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: visible;
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            transform-style: preserve-3d;
-            will-change: width, height, border-radius, transform;
-        }
-
-        .nav-item {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            position: relative;
-            transition: color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-        }
-
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--hover-color);
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.03);
-            border-radius: 30px;
-        }
-
-        /* Logo Glass Container */
-        .logo-glass {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            animation-delay: 0.1s;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none;
-        }
-
-        .logo-glass:hover {
-            transform: translateY(-2px) scale(1.05);
-        }
-
-        .logo-glass img {
-            height: 48px;
-            width: auto;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-            transform: scale(1.15);
-        }
-
-        /* Main Content */
-        .careers-main {
-            position: relative;
-            z-index: 1;
-            padding-top: 7.5rem;
-            min-height: 100vh;
-        }
-
-        .careers-wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Section 1: Hero with Career GIF */
-        .hero-section {
-            position: relative;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            border-radius: 24px;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(0, 153, 253, 0.02), rgba(48, 199, 11, 0.02));
-            margin-bottom: 4rem;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero-gif-container {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-gif {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.15;
-            mix-blend-mode: multiply;
-        }
-
-        .gradient-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-                rgba(0, 179, 255, 0.1) 0%, 
-                rgba(0, 255, 153, 0.08) 50%, 
-                rgba(254, 192, 0, 0.06) 100%);
-            opacity: 0.6;
-            mix-blend-mode: screen;
-            animation: gradientShift 8s ease-in-out infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.02); }
-        }
-
-        .hero-kicker {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 50px;
-            background: linear-gradient(90deg, rgba(0, 153, 253, 0.1), rgba(48, 199, 11, 0.08));
-            color: var(--accent1);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .hero-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin: 0 0 1.5rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        @keyframes gradientScroll {
-            0% { background-position: 0% center; }
-            100% { background-position: -200% center; }
-        }
-
-        .hero-description {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            line-height: 1.7;
-            color: rgba(0, 0, 0, 0.7);
-            margin: 0 0 2rem;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-cta::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50px;
-            padding: 2px;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
-            background-size: 200% auto;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: gradientScroll 2s linear infinite;
-            z-index: -1;
-        }
-
-        .hero-cta:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 153, 253, 0.3);
-        }
-
-        /* Section 2: Join Our Mission with Robot */
-        .mission-section {
-            padding: 6rem 2rem;
-            position: relative;
-            margin-bottom: 4rem;
-        }
-
-        .mission-container {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .mission-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .mission-panel {
-            padding: 3rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mission-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            padding: 2px;
-            background: linear-gradient(120deg, var(--accent1), var(--accent2), var(--accent3), var(--accent1));
-            background-size: 200% auto;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            animation: gradientScroll 3s linear infinite;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        .section-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            font-weight: 700;
-            margin: 0 0 1.5rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        .mission-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: rgba(0, 0, 0, 0.7);
-            margin-bottom: 2rem;
-        }
-
-        .roles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .role-card {
-            padding: 1.5rem;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .role-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 1px;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            background-size: 200% auto;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .role-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 153, 253, 0.2);
-        }
-
-        .role-card:hover::before {
-            opacity: 0.8;
-            animation: gradientScroll 2s linear infinite;
-        }
-
-        .role-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0 0 0.5rem;
-            color: #0a0a0a;
-        }
-
-        .role-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.6);
-            margin: 0;
-        }
-
-        .robot-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .robot-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .robot-image {
-            width: 280px;
-            height: 280px;
-            object-fit: contain;
-            border-radius: 20px;
-            position: relative;
-            z-index: 2;
-            animation: floatRobot 6s ease-in-out infinite;
-            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.1));
-        }
-
-        @keyframes floatRobot {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .robot-arc {
-            position: absolute;
-            right: 20px;
-            top: 30%;
-            width: 320px;
-            height: 200px;
-            opacity: 0.4;
-            transform: rotate(-15deg);
-            animation: arcMorph 8s ease-in-out infinite;
-        }
-
-        @keyframes arcMorph {
-            0%, 100% { transform: rotate(-15deg) scale(1); opacity: 0.4; }
-            50% { transform: rotate(-10deg) scale(1.1); opacity: 0.6; }
-        }
-
-        /* Section 3: Principles */
-        .principles-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, rgba(0, 153, 253, 0.02), rgba(48, 199, 11, 0.02));
-            border-radius: 24px;
-            margin-bottom: 4rem;
-        }
-
-        .principles-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .principles-content h2 {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            font-weight: 700;
-            margin: 0 0 1.5rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        .principles-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: rgba(0, 0, 0, 0.7);
-            margin-bottom: 2rem;
-        }
-
-        .verses-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .verse-card {
-            padding: 1.5rem;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .verse-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 1px;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-            background-size: 200% auto;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .verse-card:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 153, 253, 0.15);
-        }
-
-        .verse-card:hover::before {
-            opacity: 0.6;
-            animation: gradientScroll 2s linear infinite;
-        }
-
-        .verse-reference {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--accent1);
-            margin: 0 0 0.5rem;
-        }
-
-        .verse-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.7);
-            margin: 0;
-            font-style: italic;
-        }
-
-        .principles-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .principles-image:hover {
-            transform: scale(1.05);
-        }
-
-        .interpretation-panel {
-            padding: 2rem;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            margin-top: 2rem;
-        }
-
-        .interpretation-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 0 0 1rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        .interpretation-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.7);
-            margin: 0;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 980px) {
-            .mission-container,
-            .principles-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .robot-container {
-                width: 100%;
-                height: 300px;
-                margin-top: 2rem;
-            }
-
-            .robot-image {
-                width: 200px;
-                height: 200px;
-            }
-
-            .principles-image {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                min-height: 60vh;
-                padding: 2rem 1rem;
-            }
-
-            .mission-section,
-            .principles-section {
-                padding: 3rem 1rem;
-            }
-
-            .mission-panel {
-                padding: 2rem;
-            }
-
-            .roles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .logo-glass {
-                top: 1.5rem;
-                left: 1.5rem;
-                width: 56px;
-                height: 56px;
-            }
-
-            .logo-glass img {
-                height: 38px;
-            }
-
-            .navbar-wrapper {
-                padding-top: 1.5rem;
-            }
-        }
-
-        /* Cursor Sparkle System */
-        .cursor-sparkle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            animation: sparkleFade 1.2s ease-out forwards;
-        }
-
-        @keyframes sparkleFade {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.1) rotate(0deg); }
-            40% { opacity: 1; transform: translate(-50%, -50%) scale(var(--scale-factor)) rotate(45deg); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(90deg); }
-        }
-
-        .star-shape {
-            width: 4px;
-            height: 4px;
-            background: currentColor;
-            position: relative;
-            animation: starPulse 0.6s ease-in-out infinite;
-        }
-
-        .star-shape::before,
-        .star-shape::after {
-            content: '';
-            position: absolute;
-            background: currentColor;
-            border-radius: 50%;
-        }
-
-        .star-shape::before {
-            width: 100%;
-            height: 100%;
-            top: -6px;
-            left: 0;
-        }
-
-        .star-shape::after {
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: -6px;
-        }
-
-        @keyframes starPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        .sparkle-shine {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: shineBlink 0.4s ease-in-out infinite;
-        }
-
-        @keyframes shineBlink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #ffffff; font-family: 'Montserrat', sans-serif; }
     </style>
     <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/careers.css">
     <script src="src/js/global-nav.js" defer></script>
-
-
+    <script src="src/js/careers.js" defer></script>
 </head>
 <body>
-    <!-- Separate Logo Container -->
     <a href="index.html" class="logo-glass">
-        <!-- SVG Logo -->
         <img src="src/assets/images/logo.svg" alt="Tinker Logo" onerror="this.onerror=null; console.error('SVG not found')">
     </a>
-
-    <!-- Behavioral CTA System (Right side space) -->
     <div class="dynamic-cta-wrapper">
         <div class="attention-orb"></div>
         <button class="dynamic-cta">
             <span class="cta-text-wrapper"><span class="cta-text show" id="ctaText">Ready? Partner Now</span></span>
         </button>
     </div>
-
-    <!-- Center Navbar -->
     <div class="navbar-wrapper">
         <nav class="navbar" id="navbar">
-            <a href="index.html" class="nav-item active"><span class="nav-text">Home</span></a>
+            <a href="index.html" class="nav-item"><span class="nav-text">Home</span></a>
             <div class="nav-item products-dropdown">
                 <span class="nav-text">Products</span>
                 <div class="dropdown-arrow"></div>
@@ -820,7 +57,6 @@
                         <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
                         <img src="src/assets/product_dropdown_Assets/tinker%20literacy.gif" alt="" class="product-card-bg-gif literacy-center">
                     </a>
-
                     <div class="products-mobile-stack">
                         <div class="uses-card" style="--delay: 0.05s; --slide-x: 0px;">
                             <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
@@ -875,7 +111,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="nav-item uses-dropdown">
                 <span class="nav-text">Uses</span>
                 <div class="dropdown-arrow"></div>
@@ -898,15 +133,14 @@
                     </div>
                 </div>
             </div>
-            
             <a href="start-learning.html" class="nav-item btn-start"><span class="nav-text">Start Learning</span></a>
-            
             <a href="pricing.html" class="nav-item"><span class="nav-text">Pricing</span></a>
-            <div class="nav-item company-dropdown">
+            <div class="nav-item company-dropdown active">
                 <span class="nav-text">Company</span>
                 <div class="dropdown-arrow"></div>
                 <div class="company-dropdown-panel">
                     <div class="company-dropdown-grid">
+                        <a href="careers.html" class="company-card" style="--delay: 0.02s;; text-decoration: none; color: inherit;"><h4>Careers</h4></a>
                         <a href="company.html" class="company-card" style="--delay: 0.04s;; text-decoration: none; color: inherit;"><h4>How does tinker see itself?</h4></a>
                         <a href="company.html" class="company-card" style="--delay: 0.08s;; text-decoration: none; color: inherit;"><h4>Founding Vision</h4></a>
                         <a href="company.html" class="company-card" style="--delay: 0.12s;; text-decoration: none; color: inherit;"><h4>Mission</h4></a>
@@ -921,15 +155,12 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Mobile CTA Injected inside burger -->
             <div class="mobile-dynamic-cta-wrapper">
                 <div class="attention-orb"></div>
                 <button class="dynamic-cta mobile-dynamic-cta">
                     <span class="cta-text-wrapper"><span class="cta-text show">Ready? Partner Now</span></span>
                 </button>
             </div>
-            
             <div class="mobile-toggle" id="mobileToggle">
                 <span></span>
                 <span></span>
@@ -938,176 +169,197 @@
         </nav>
     </div>
 
-    <main class="careers-main">
-        <div class="careers-wrap">
-            <!-- Section 1: Hero with Career GIF -->
-            <section class="hero-section">
-                <div class="hero-gif-container">
-                    <img src="src/assets/images/career.gif" alt="Career Animation" class="hero-gif">
-                    <div class="gradient-overlay"></div>
-                </div>
-                <div class="hero-content">
-                    <div class="hero-kicker">Now Hiring</div>
-                    <h1 class="hero-title">Build Future of Learning</h1>
-                    <p class="hero-description">
-                        Join our mission to transform education through AI-powered personalized learning. 
-                        We're looking for passionate innovators who believe in power of technology 
-                        to create meaningful educational experiences.
-                    </p>
-                    <a href="#mission" class="hero-cta">Explore Opportunities</a>
-                </div>
-            </section>
+    <main class="careers-page" id="careers-top">
+        <div class="careers-progress" aria-hidden="true"><span class="careers-progress__bar"></span></div>
 
-            <!-- Section 2: Join Our Mission with Robot -->
-            <section id="mission" class="mission-section">
-                <div class="mission-container">
-                    <div class="mission-content">
-                        <div class="mission-panel">
-                            <h2 class="section-title">Join Our Mission</h2>
-                            <p class="mission-description">
-                                We believe in purpose-driven work that prioritizes student growth, ethical AI, 
-                                and measurable impact. Our team combines deep expertise in education, technology, 
-                                and design to create solutions that truly matter.
-                            </p>
-                            <div class="roles-grid">
-                                <div class="role-card">
-                                    <h3 class="role-title">Senior ML Engineer</h3>
-                                    <p class="role-description">Ship models that improve student learning outcomes through advanced AI.</p>
-                                </div>
-                                <div class="role-card">
-                                    <h3 class="role-title">Product Designer</h3>
-                                    <p class="role-description">Design experiences that drive measurable learning engagement.</p>
-                                </div>
-                                <div class="role-card">
-                                    <h3 class="role-title">Curriculum Engineer</h3>
-                                    <p class="role-description">Create scaffolded learning progressions aligned to pedagogy.</p>
-                                </div>
-                                <div class="role-card">
-                                    <h3 class="role-title">Platform Engineer</h3>
-                                    <p class="role-description">Build resilient services for real-time learning experiences.</p>
-                                </div>
-                            </div>
-                        </div>
+        <section class="careers-hero careers-reveal" aria-labelledby="careers-hero-title">
+            <div class="careers-hero__media">
+                <img src="src/assets/images/career.gif" alt="" class="careers-hero__gif" width="1920" height="1080">
+                <div class="careers-hero__veil" aria-hidden="true"></div>
+                <div class="careers-hero__grid" aria-hidden="true"></div>
+            </div>
+            <div class="careers-hero__inner">
+                <p class="careers-kicker">Now Hiring</p>
+                <h1 id="careers-hero-title" class="careers-title">Build Future of Learning</h1>
+                <p class="careers-lede">Join our mission to transform education through AI-powered personalized learning. We're looking for passionate innovators who believe in power of technology to create meaningful educational experiences.</p>
+                <a href="#mission" class="careers-hero__cta">Explore Opportunities</a>
+            </div>
+        </section>
+
+        <section id="open-roles" class="careers-section careers-reveal" aria-labelledby="careers-open-roles-title">
+            <div class="careers-section__contain">
+                <h2 id="careers-open-roles-title" class="careers-h2-heading careers-h2-heading--solid">Open <span class="careers-h2-heading--hover-gradient">roles</span></h2>
+                <p class="careers-hr-note"><a href="mailto:hr@tinker.ai">hr@tinker.ai</a></p>
+                <p class="careers-jobs-meta">Posting detail pages can connect later from CMS, admin, or jobs portal feeds.</p>
+
+                <div id="careersJobsFeed" class="careers-jobs-feed" aria-live="polite">
+                    <article class="careers-job-card careers-reveal" data-career-job-id="placeholder-senior-ml">
+                        <span class="careers-job-card__meta">Open role</span>
+                        <h3 class="careers-job-card__title">Senior ML Engineer</h3>
+                        <p class="careers-intro" style="margin:0;font-size:0.95rem;">Ship models that improve student learning outcomes through advanced AI.</p>
+                        <span class="careers-job-card__cta">Details soon</span>
+                    </article>
+                    <article class="careers-job-card careers-reveal" data-career-job-id="placeholder-product-designer">
+                        <span class="careers-job-card__meta">Open role</span>
+                        <h3 class="careers-job-card__title">Product Designer</h3>
+                        <p class="careers-intro" style="margin:0;font-size:0.95rem;">Design experiences that drive measurable learning engagement.</p>
+                        <span class="careers-job-card__cta">Details soon</span>
+                    </article>
+                    <article class="careers-job-card careers-reveal" data-career-job-id="placeholder-curriculum">
+                        <span class="careers-job-card__meta">Open role</span>
+                        <h3 class="careers-job-card__title">Curriculum Engineer</h3>
+                        <p class="careers-intro" style="margin:0;font-size:0.95rem;">Create scaffolded learning progressions aligned to pedagogy.</p>
+                        <span class="careers-job-card__cta">Details soon</span>
+                    </article>
+                    <article class="careers-job-card careers-reveal" data-career-job-id="placeholder-platform-eng">
+                        <span class="careers-job-card__meta">Open role</span>
+                        <h3 class="careers-job-card__title">Platform Engineer</h3>
+                        <p class="careers-intro" style="margin:0;font-size:0.95rem;">Build resilient services for real-time learning experiences.</p>
+                        <span class="careers-job-card__cta">Details soon</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission" class="careers-section careers-reveal" aria-labelledby="careers-mission-title">
+            <div class="careers-section__contain">
+                <div class="careers-mission">
+                    <div class="careers-mission-panel careers-panel">
+                        <h2 id="careers-mission-title" class="careers-h2-heading careers-h2-heading--solid">Join Our <span class="careers-h2-heading--hover-gradient">Mission</span></h2>
+                        <p class="careers-intro">We believe in purpose-driven work that prioritizes student growth, ethical AI, and measurable impact. Our team combines deep expertise in education, technology, and design to create solutions that truly matter.</p>
                     </div>
-                    <div class="robot-container">
-                        <div class="robot-wrapper">
-                            <svg class="robot-arc" width="420" height="260" viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="careers-mission__aside">
+                        <div class="careers-robot-arc" aria-hidden="true">
+                            <svg viewBox="0 0 420 260" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
-                                    <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <linearGradient id="careersMissionArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                                         <stop offset="0%" stop-color="#0099FD" />
                                         <stop offset="33%" stop-color="#30C70B" />
                                         <stop offset="66%" stop-color="#FEC000" />
                                         <stop offset="100%" stop-color="#0099FD" />
                                     </linearGradient>
                                 </defs>
-                                <path d="M10 220 C120 10 300 10 410 220" stroke="url(#arcGradient)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10 220 C120 10 300 10 410 220" stroke="url(#careersMissionArcGrad)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
                             </svg>
-                            <img src="src/assets/robot.png" alt="AI Robot" class="robot-image">
                         </div>
+                        <img src="src/assets/robot.png" alt="" class="careers-robot" width="580" height="580" loading="lazy">
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Section 3: Principles -->
-            <section class="principles-section">
-                <div class="principles-container">
-                    <div class="principles-content">
-                        <h2>Our Guiding Principles</h2>
-                        <p class="principles-description">
-                            Our work is grounded in enduring principles that form foundation of integrity, 
-                            discipline, and collective responsibility. These values guide every decision we make 
-                            and every product we build.
-                        </p>
-                        <div class="verses-grid">
-                            <div class="verse-card">
-                                <h3 class="verse-reference">Surah An‑Najm (53:39)</h3>
-                                <p class="verse-text">"And that there is not for man except that [good] for which he strives."</p>
-                            </div>
-                            <div class="verse-card">
-                                <h3 class="verse-reference">Surah Al‑Hujurat (49:11)</h3>
-                                <p class="verse-text">"O believers! Do not let some ˹men˺ ridicule others... How evil it is to act rebelliously after having faith!"</p>
-                            </div>
-                            <div class="verse-card">
-                                <h3 class="verse-reference">Surah As‑Saff (61:2)</h3>
-                                <p class="verse-text">"Why do you say what you do not do?"</p>
-                            </div>
-                            <div class="verse-card">
-                                <h3 class="verse-reference">Surah Al‑Mu'minun (23:8)</h3>
-                                <p class="verse-text">"Those who are true to their trusts and covenants."</p>
-                            </div>
-                            <div class="verse-card">
-                                <h3 class="verse-reference">Surah Ash‑Shuraa (42:19)</h3>
-                                <p class="verse-text">"Allah is Ever Kind to His servants... And He is All‑Powerful"</p>
-                            </div>
-                        </div>
+        <section id="principles" class="careers-section careers-reveal" aria-labelledby="careers-principles-title">
+            <div class="careers-section__contain">
+                <h2 id="careers-principles-title" class="careers-h2-heading careers-h2-heading--solid">Our Guiding <span class="careers-h2-heading--hover-gradient">Principles</span></h2>
+                <p class="careers-intro">Our work is grounded in enduring principles that form foundation of integrity, discipline, and collective responsibility. These values guide every decision we make and every product we build.</p>
+                <div class="careers-principles-layout">
+                    <div class="careers-ayat-stair">
+                        <article class="careers-ayat-card careers-reveal">
+                            <p class="careers-ayat-ref">Surah An-Najm (53:39)</p>
+                            <p class="careers-ayat-text">&ldquo;And that there is not for man except that [good] for which he strives.&rdquo;</p>
+                            <p class="careers-ayat-impact">How this shapes our culture and work: effort is non-transferable, so ownership and disciplined execution are baseline expectations across teams.</p>
+                        </article>
+                        <article class="careers-ayat-card careers-reveal">
+                            <p class="careers-ayat-ref">Surah Al-Hujurat (49:11)</p>
+                            <p class="careers-ayat-text">&ldquo;O believers! Do not let some ˹men˺ ridicule others... How evil it is to act rebelliously after having faith!&rdquo;</p>
+                            <p class="careers-ayat-impact">How this shapes our culture and work: respect is operational, not decorative; we challenge ideas without diminishing people, roles, or institutions.</p>
+                        </article>
+                        <article class="careers-ayat-card careers-reveal">
+                            <p class="careers-ayat-ref">Surah As-Saff (61:2)</p>
+                            <p class="careers-ayat-text">&ldquo;Why do you say what you do not do?&rdquo;</p>
+                            <p class="careers-ayat-impact">How this shapes our culture and work: commitments must be traceable to delivery; we do not make claims we cannot evidence in product behavior.</p>
+                        </article>
+                        <article class="careers-ayat-card careers-reveal">
+                            <p class="careers-ayat-ref">Surah Al-Mu'minun (23:8)</p>
+                            <p class="careers-ayat-text">&ldquo;Those who are true to their trusts and covenants.&rdquo;</p>
+                            <p class="careers-ayat-impact">How this shapes our culture and work: learner trust, school commitments, and data obligations are treated as contracts we honor without exception.</p>
+                        </article>
+                        <article class="careers-ayat-card careers-reveal">
+                            <p class="careers-ayat-ref">Surah Ash-Shuraa (42:19)</p>
+                            <p class="careers-ayat-text">&ldquo;Allah is Ever Kind to His servants... And He is All-Powerful&rdquo;</p>
+                            <p class="careers-ayat-impact">How this shapes our culture and work: we pair rigor with care, designing systems that are effective, humane, and proportionate for students and teachers.</p>
+                        </article>
                     </div>
-                    <div class="principles-sidebar">
-                        <img src="src/assets/sales.png" alt="Team Collaboration" class="principles-image">
-                        <div class="interpretation-panel">
-                            <h3 class="interpretation-title">Our Interpretation</h3>
-                            <p class="interpretation-text">
-                                These principles inform our code of conduct, product integrity, and collaborative practices — 
-                                emphasizing accountability, humility, and measurable contribution to education.
-                            </p>
+                    <aside class="careers-principles-side careers-reveal">
+                        <img src="src/assets/pillar.png" alt="" class="careers-side-img" width="520" height="680" loading="lazy">
+                        <div class="careers-panel careers-interpretation">
+                            <h3 class="careers-h2-heading careers-h2-heading--solid" style="font-size:1.12rem; margin:0 0 12px;">Our Interpretation</h3>
+                            <p class="careers-intro" style="margin:0;">These principles inform our code of conduct, product integrity, and collaborative practices &mdash; emphasizing accountability, humility, and measurable contribution to education.</p>
                         </div>
-                    </div>
+                    </aside>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section id="how-we-see-work" class="careers-section careers-reveal" aria-labelledby="careers-work-title">
+            <div class="careers-section__contain">
+                <h2 id="careers-work-title" class="careers-h2-heading careers-h2-heading--solid">How We <span class="careers-h2-heading--hover-gradient">See Work</span></h2>
+                <p class="careers-intro">Work at tinker is not defined by output. It is defined by what that output builds toward.</p>
+                <p class="careers-intro">Three pillars run through every role, every roadmap, every decision made inside this organisation. They are not aspirational. They are operational &mdash; the lens through which we review work, resolve conflict, and determine what gets built next.</p>
+
+                <div class="careers-pillars">
+                    <article class="careers-pillar careers-reveal">
+                        <h3 class="careers-h2-heading careers-h2-heading--hover-gradient">Institutional Craft</h3>
+                        <p class="careers-pillar-quote">We build for the long term. Not the demo, not the pitch &mdash; the third year of a school's deployment, when the system is being used by teachers who never attended a training session, on devices that are two generations old, in a context no product manager visited. That is the environment we design for.</p>
+                        <p class="careers-intro">Durable defaults over one-off wins. Documentation that future members of this team will actually need. Incentives aligned to learning outcomes &mdash; because a metric that doesn't connect to how a child learns is not a metric worth optimising for.</p>
+                    </article>
+                    <article class="careers-pillar careers-reveal">
+                        <h3 class="careers-h2-heading careers-h2-heading--hover-gradient">Truthful Measurement</h3>
+                        <p class="careers-pillar-quote">What we claim, we can show. That is not a value &mdash; it is a working condition.</p>
+                        <p class="careers-intro">Evidence, audit trails, and honest disclosure of model limitations and data boundaries come before any release. We expose uncertainty. We surface failure modes. We pair qualitative signal from classrooms with quantitative checks &mdash; because neither alone is sufficient and both together are still incomplete without the humility to say so.</p>
+                        <p class="careers-intro">We invest in evaluation before expansion. Especially when minors are in the loop. The bar does not move because a deadline is close.</p>
+                    </article>
+                    <article class="careers-pillar careers-reveal">
+                        <h3 class="careers-h2-heading careers-h2-heading--hover-gradient">Shared Guardrails</h3>
+                        <p class="careers-pillar-quote">Safety and privacy are not assigned to one team. They are constraints that every function designs against from the beginning &mdash; product, engineering, education, operations.</p>
+                        <p class="careers-intro">We bring policy, design, and engineering into the same room early. We respond to issues proportionately, transparently, and without blame displacement. We keep escalation paths legible &mdash; for internal teams, for schools, and for families. When something surfaces, the path forward is already known.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="ethics" class="careers-section careers-reveal" aria-labelledby="careers-ethics-title">
+            <div class="careers-section__contain">
+                <h2 id="careers-ethics-title" class="careers-h2-heading careers-h2-heading--solid">Ethics and <span class="careers-h2-heading--hover-gradient">Values</span></h2>
+                <p class="careers-intro">These are the non-negotiables. Not statements of aspiration &mdash; criteria for how we hire, how we perform, and what it feels like to work and partner with tinker.</p>
+                <div class="careers-ethics-grid">
+                    <article class="careers-ethics-card careers-reveal">
+                        <h3>Integrity over narrative.</h3>
+                        <p class="careers-intro">We say no when speed would break trust. We document decisions that affect learners and data &mdash; not for compliance, but because decisions with consequences deserve a record. We do not construct a version of the truth that is easier to communicate. We communicate the truth.</p>
+                    </article>
+                    <article class="careers-ethics-card careers-reveal">
+                        <h3>Humility in expertise.</h3>
+                        <p class="careers-intro">Teachers and families are co-authors of product truth. The person in the classroom every day knows something we do not, and that knowledge is not optional input &mdash; it is the ground our work stands on. We invite challenge. Title does not end debate. Seniority does not make a position correct.</p>
+                    </article>
+                    <article class="careers-ethics-card careers-reveal">
+                        <h3>Speed with consent.</h3>
+                        <p class="careers-intro">We move fast where risk is bounded. We slow down where minors or sensitive data are involved &mdash; and that slowdown is not reluctance, it is the appropriate response to the responsibility we carry. We prefer explicit opt-in for any new surface that changes classroom dynamics. The default is caution, not momentum.</p>
+                    </article>
+                    <article class="careers-ethics-card careers-reveal">
+                        <h3>Transparency with partners.</h3>
+                        <p class="careers-intro">Plain language on capabilities, costs, and roadmaps &mdash; to every school leader, every institutional partner, every decision-maker who carries liability for what we build together. No black-box promises. No commitments we cannot trace back to something real.</p>
+                    </article>
+                    <article class="careers-ethics-card careers-reveal">
+                        <h3>Care for learners.</h3>
+                        <p class="careers-intro">Accessibility, psychological safety, and proportionate data use are product requirements. Not considerations &mdash; requirements. We measure success in sustained engagement and genuine growth. Not retention engineered through habit loops. Not sessions extended past the point of learning. Growth. The kind that shows up in a student's ability to think, not in a dashboard.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="careers-impact careers-reveal" aria-labelledby="careers-impact-title">
+            <div class="careers-section__contain">
+                <h2 id="careers-impact-title" class="careers-h2-heading careers-h2-heading--solid">How Our Work Impacts <span class="careers-h2-heading--hover-gradient">Students' Lives</span></h2>
+                <p class="careers-intro">Every role here touches what a child actually experiences.</p>
+                <p class="careers-intro">Not abstractly. Concretely &mdash; how feedback arrives after a wrong answer, how a mistake is framed inside the system, how agency is practised inside a learning path, how a parent understands what their child did today and what it means for tomorrow. These are not UX decisions. They are consequential decisions that happen to be expressed through interface and system behaviour.</p>
+                <p class="careers-intro">We hire people who feel the weight of that. Who understand that the system they are building is not neutral &mdash; that every design choice carries a position on what learning should feel like, what a child's relationship with difficulty should be, and what adults owe children when they are trusted with their development.</p>
+                <p class="careers-intro">That weight does not produce paralysis. It produces rigour.</p>
+                <p class="careers-intro">If your work improves teacher judgment &mdash; you are returning attention to the student. If it clarifies a learning path &mdash; you are reducing the friction between a child and something they are trying to understand. If it reduces administrative drag &mdash; you are giving back time that was never meant to be spent on a spreadsheet. All of it flows to the child.</p>
+                <p class="careers-intro">That is the impact bar we use in prioritisation. Not sessions. Not activations. Not growth-week numbers. The question is simple: does this make the learning better, the teacher more capable, or the institution more able to serve the student in front of it?</p>
+                <p class="careers-intro">If the answer is yes &mdash; it moves forward. If the answer is unclear &mdash; we find out before we ship.</p>
+            </div>
+        </section>
     </main>
-
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const heroSection = document.querySelector('.hero-section');
-            if (heroSection) {
-                const rect = heroSection.getBoundingClientRect();
-                if (rect.bottom > 0 && rect.top < window.innerHeight) {
-                    const speed = 0.5;
-                    const yPos = -(scrolled * speed);
-                    heroSection.style.transform = `translateY(${yPos}px)`;
-                }
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.role-card, .verse-card, .mission-panel').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
     <!-- Footer Section -->
     <footer class="site-footer" id="siteFooter">
         <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -1153,8 +405,7 @@
                     <a href="for-learning.html" class="footer-link" style="color: #000; font-weight: 700;">For Learning</a>
                 </div>
                 <div class="footer-column reveal-item" style="transition-delay: 0.2s">
-                    <h4 class="footer-heading"><span class="heading-text">Products & Platform</span>
-                        <!-- Arrow down -->
+                    <h4 class="footer-heading"><span class="heading-text">Products &amp; Platform</span>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" style="margin-left: 4px;">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -1174,7 +425,6 @@
             <div class="footer-bottom-grid reveal-item" style="transition-delay: 0.4s">
                 <div class="footer-bottom-left">
                     <img src="src/assets/images/Tinker Logo-17.svg" class="footer-logo-img" alt="Tinker Logo" style="height: 150px; width: auto; margin-left: -30px; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                    
                 </div>
                 <div class="footer-bottom-links">
                     <div class="footer-links-col">
@@ -1190,14 +440,14 @@
                     <div class="footer-links-col">
                         <a href="terms.html" class="footer-link">Terms of Service</a>
                         <a href="privacy.html" class="footer-link">Privacy Policy</a>
-                                            </div>
+                    </div>
                 </div>
-                
-            <div class="footer-bottom-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 20px;">
-    <div class="copyright-text" style="font-size: 0.85rem; color: #888; text-align: left;">
-        &copy; 2026 <span style="font-family: 'Baloo 2', sans-serif !important; color: #444; font-weight: 500; font-size: 1.15em;">tinker</span>. All Rights Reserved.
-    </div>
-    <div class="social-pill">
+
+                <div class="footer-bottom-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 20px;">
+                    <div class="copyright-text" style="font-size: 0.85rem; color: #888; text-align: left;">
+                        &copy; 2026 <span style="font-family: 'Baloo 2', sans-serif !important; color: #444; font-weight: 500; font-size: 1.15em;">tinker</span>. All Rights Reserved.
+                    </div>
+                    <div class="social-pill">
                         <a href="#" class="social-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 1.926-6.98 6.26-.058 1.281-.072 1.688-.072 4.948s.014 3.666.072 4.947c.2 4.358 2.618 6.781 6.98 6.98 1.281.058 1.689.072 4.947.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-1.926 6.979-6.26.059-1.281.073-1.689.073-4.947 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
@@ -1214,12 +464,10 @@
                             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                         </a>
                     </div>
-                  
-</div>
-</div>
+                </div>
+            </div>
         </div>
     </footer>
-
 
 </body>
 </html>

@@ -13,6 +13,7 @@
         initCompanyAnchors();
         initAIGovernanceAnchors();
         initSecurityAnchors();
+        initPrivacyAnchors();
         initFooterObserver();
     });
 
@@ -227,7 +228,14 @@
         });
     }
 
-    /* ── 7. Footer reveal observer ── */
+    /* ── 7. Privacy deep links ── */
+    function initPrivacyAnchors() {
+        document.querySelectorAll('a[href="privacy-data-protection.html"]').forEach(function (link) {
+            link.setAttribute('href', 'privacy-data-protection.html#privacy-is-a-system-responsibility');
+        });
+    }
+
+    /* ── 8. Footer reveal observer ── */
     function initFooterObserver() {
         var footer = document.getElementById('siteFooter');
         if (!footer) return;
