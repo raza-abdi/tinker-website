@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinker | Privacy and Data Protection</title>
+    <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #ffffff; font-family: 'Montserrat', sans-serif; }
+    </style>
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/privacy-data-protection.css">
+    <script src="src/js/global-nav.js" defer></script>
+    <script src="src/js/privacy-data-protection.js" type="module" defer></script>
+
+</head>
+<body>
+    <!-- Separate Logo Container -->
+    <a href="index.html" class="logo-glass">
+        <!-- SVG Logo -->
+        <img src="src/assets/images/logo.svg" alt="Tinker Logo" onerror="this.onerror=null; console.error('SVG not found')">
+    </a>
+
+    <!-- Behavioral CTA System (Right side space) -->
+    <div class="dynamic-cta-wrapper">
+        <div class="attention-orb"></div>
+        <button class="dynamic-cta">
+            <span class="cta-text-wrapper"><span class="cta-text show" id="ctaText">Ready? Partner Now</span></span>
+        </button>
+    </div>
+
+    <!-- Center Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="nav-item"><span class="nav-text">Home</span></a>
+            <div class="nav-item products-dropdown active">
+                <span class="nav-text">Products</span>
+                <div class="dropdown-arrow"></div>
+                <div class="products-dropdown-panel">
+                    <a href="tinker-kids.html" class="product-card product-card--kids align-top" style="--delay: 0.05s;">
+                        <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                        <p>AI-native Personalized Learning Suite</p>
+                        <img src="src/assets/product_dropdown_Assets/TINKER_kids.gif" alt="" class="product-card-bg-gif">
+                    </a>
+                    <a href="novelty-in-tinker.html" class="product-card product-card--novelty align-right align-top" style="--delay: 0.1s;">
+                        <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                        <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                        <img src="src/assets/product_dropdown_Assets/novelty.gif" alt="" class="product-card-bg-gif center">
+                    </a>
+                    <a href="tinker-world.html" class="product-card product-card--world align-bottom" style="--delay: 0.15s;">
+                        <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                        <p>AI-native School Management Suite</p>
+                        <img src="src/assets/product_dropdown_Assets/tinker_wordl.gif" alt="" class="product-card-bg-gif">
+                    </a>
+                    <a href="features.html" class="product-card product-card--features align-bottom" style="--delay: 0.2s;">
+                        <h4>Features</h4>
+                        <p>Explores the flagship features that helps every child.</p>
+                        <img src="src/assets/product_dropdown_Assets/feature.gif" alt="" class="product-card-bg-gif right-center">
+                    </a>
+                    <a href="tinker-literacy.html" class="product-card product-card--literacy align-right align-bottom" style="--delay: 0.25s;">
+                        <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                        <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                        <img src="src/assets/product_dropdown_Assets/tinker%20literacy.gif" alt="" class="product-card-bg-gif literacy-center">
+                    </a>
+
+                    <div class="products-mobile-stack">
+                        <div class="uses-card" style="--delay: 0.05s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                            <p>AI-native Personalized Learning Suite</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.1s; --slide-x: 0px;">
+                            <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                            <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.15s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                            <p>AI-native School Management Suite</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.2s; --slide-x: 0px;">
+                            <h4>Features</h4>
+                            <p>Explores the flagship features that helps every child.</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.25s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                            <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item uses-dropdown products-mobile-only">
+                <span class="nav-text">Products</span>
+                <div class="dropdown-arrow"></div>
+                <div class="uses-dropdown-panel">
+                    <div class="uses-dropdown-grid">
+                        <div class="uses-card large" style="--delay: 0.08s; --slide-x: -12px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                            <p>AI-native Personalized Learning Suite</p>
+                        </div>
+                        <div class="uses-dropdown-stack">
+                            <div class="uses-card align-right" style="--delay: 0.14s; --slide-x: 12px;">
+                                <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                                <p>AI-native School Management Suite</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px;">
+                                <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                                <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.24s; --slide-x: 12px;">
+                                <h4>Features</h4>
+                                <p>Explores the flagship features that helps every child.</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.28s; --slide-x: 12px;">
+                                <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                                <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item uses-dropdown">
+                <span class="nav-text">Uses</span>
+                <div class="dropdown-arrow"></div>
+                <div class="uses-dropdown-panel">
+                    <div class="uses-dropdown-grid">
+                        <a href="by-persona.html" class="uses-card large" style="--delay: 0.08s; --slide-x: -12px;; text-decoration: none; color: inherit;">
+                        <h4>By persona</h4>
+                            <p>Get most of <span class="dropdown-tinker">tinker</span> according to you. For Executives, teachers, and Influencer</p>
+                        </a>
+                        <div class="uses-dropdown-stack">
+                            <a href="for-schools.html" class="uses-card align-right" style="--delay: 0.14s; --slide-x: 12px;" style="text-decoration:none;color:inherit;">
+                            <h4>For Schools</h4>
+                                <p>AI-Native STEM-based learning and operations management</p>
+                            </a>
+                            <a href="for-learning.html" class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px;" style="text-decoration:none;color:inherit;">
+                            <h4>For Learning</h4>
+                                <p>Child-safe AI-based personalized learning</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="start-learning.html" class="nav-item btn-start"><span class="nav-text">Start Learning</span></a>
+            
+            <a href="pricing.html" class="nav-item"><span class="nav-text">Pricing</span></a>
+            <div class="nav-item company-dropdown">
+                <span class="nav-text">Company</span>
+                <div class="dropdown-arrow"></div>
+                <div class="company-dropdown-panel">
+                    <div class="company-dropdown-grid">
+                        <a href="company.html" class="company-card" style="--delay: 0.04s;; text-decoration: none; color: inherit;"><h4>How does tinker see itself?</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.08s;; text-decoration: none; color: inherit;"><h4>Founding Vision</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.12s;; text-decoration: none; color: inherit;"><h4>Mission</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.16s;; text-decoration: none; color: inherit;"><h4>Our Values</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.2s;; text-decoration: none; color: inherit;"><h4>Leadership and Governance</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.24s;; text-decoration: none; color: inherit;"><h4>tinker Guiding Principles</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.28s;; text-decoration: none; color: inherit;"><h4>How do we see students learning?</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.32s;; text-decoration: none; color: inherit;"><h4>What matters to us?</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.36s;; text-decoration: none; color: inherit;"><h4>Our philosophy for schools</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.4s;; text-decoration: none; color: inherit;"><h4>Our redefining approach &mdash; the tinker way.</h4></a>
+                        <a href="company.html" class="company-card" style="--delay: 0.44s;; text-decoration: none; color: inherit;"><h4>Impact</h4></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile CTA Injected inside burger -->
+            <div class="mobile-dynamic-cta-wrapper">
+                <div class="attention-orb"></div>
+                <button class="dynamic-cta mobile-dynamic-cta">
+                    <span class="cta-text-wrapper"><span class="cta-text show">Ready? Partner Now</span></span>
+                </button>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
+    <main class="privacy-page" id="privacy-top">
+        <div class="privacy-progress" aria-hidden="true"><span class="privacy-progress__bar"></span></div>
+        <div class="privacy-state" aria-live="polite"><span>Data Boundary: Enforced</span></div>
+
+        <nav class="privacy-rail" aria-label="Privacy page sections">
+            <a href="#privacy-is-a-system-responsibility" title="Privacy Is a System Responsibility" class="privacy-rail__link active">01</a>
+            <a href="#our-position-on-data" title="Our Position on Data" class="privacy-rail__link">02</a>
+            <a href="#data-collection-minimal-purpose-bound" title="Data Collection — Minimal and Purpose-Bound" class="privacy-rail__link">03</a>
+            <a href="#purpose-limitation" title="Purpose Limitation" class="privacy-rail__link">04</a>
+            <a href="#data-storage-infrastructure-control" title="Data Storage and Infrastructure Control" class="privacy-rail__link">05</a>
+            <a href="#access-control-data-visibility" title="Access Control and Data Visibility" class="privacy-rail__link">06</a>
+            <a href="#ai-and-data-usage" title="AI and Data Usage" class="privacy-rail__link">07</a>
+            <a href="#data-retention-lifecycle" title="Data Retention and Lifecycle" class="privacy-rail__link">08</a>
+            <a href="#data-deletion-exit-control" title="Data Deletion and Exit Control" class="privacy-rail__link">09</a>
+            <a href="#cookies-tracking-analytics" title="Cookies, Tracking, and Analytics" class="privacy-rail__link">10</a>
+            <a href="#third-party-access" title="Third-Party Access" class="privacy-rail__link">11</a>
+            <a href="#compliance-regulatory-alignment" title="Compliance and Regulatory Alignment" class="privacy-rail__link">12</a>
+            <a href="#user-rights-institutional-control" title="User Rights and Institutional Control" class="privacy-rail__link">13</a>
+            <a href="#security-foundation-privacy" title="Security as the Foundation of Privacy" class="privacy-rail__link">14</a>
+            <a href="#continuous-oversight" title="Continuous Oversight" class="privacy-rail__link">15</a>
+            <a href="#trust-defined-by-control" title="Trust, Defined by Control" class="privacy-rail__link">16</a>
+            <a href="#explore-further" title="Explore Further" class="privacy-rail__link">17</a>
+        </nav>
+
+        <section class="privacy-section privacy-hero" id="privacy-is-a-system-responsibility" data-privacy-stage="boundary">
+            <div class="privacy-hero__scene" id="privacyHeroScene" aria-hidden="true">
+                <div class="privacy-boundary-fallback"><span></span><span></span><span></span></div>
+            </div>
+            <div class="privacy-hero__content">
+                <span class="privacy-kicker privacy-reveal">tinker — Privacy &amp; Data Protection</span>
+                <h1 class="privacy-title privacy-reveal">Privacy Is a System Responsibility</h1>
+                <div class="privacy-copy privacy-copy--lead">
+                    <p class="privacy-reveal">Privacy is not a statement we publish. It is a boundary we enforce.</p>
+                    <p class="privacy-reveal">Every institution operating on tinker entrusts us with sensitive data — student records, learning patterns, institutional operations. This data is not incidental to the system. It is central to it. And because it is central, it is governed with strict intent — at every stage, without exception.</p>
+                    <p class="privacy-reveal">We do not treat data as an asset. We treat it as a responsibility. That distinction is not semantic. It determines every architectural decision we make about how data moves, where it lives, who can see it, and when it is gone.</p>
+                </div>
+                <div class="privacy-layer-stack privacy-reveal-card" aria-hidden="true"><span>Data</span><span>Access</span><span>Control</span><span>Governance</span></div>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="our-position-on-data" data-privacy-stage="ownership">
+            <div class="privacy-section__grid">
+                <div class="privacy-section__intro">
+                    <span class="privacy-kicker privacy-reveal">Our Position on Data</span>
+                    <h2 class="privacy-heading privacy-reveal">Our Position on Data</h2>
+                    <p class="privacy-reveal">One principle governs everything that follows:</p>
+                    <p class="privacy-principle privacy-reveal"><strong>Data belongs to the institution that generates it.</strong></p>
+                </div>
+                <div class="privacy-ownership-diagram privacy-reveal-card" aria-hidden="true">
+                    <div class="privacy-ownership-core">
+                        <span class="privacy-ownership-fixed">Ownership</span>
+                        <div class="privacy-ownership-rows">
+                            <div class="privacy-ownership-arrow"><span>Institution</span><em aria-hidden="true">→</em><span>owns</span></div>
+                            <div class="privacy-ownership-arrow"><span>tinker</span><em aria-hidden="true">→</em><span>processes</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Student data belongs to the school. Institutional data belongs to the institution. Parent-linked data remains tied to the student identity it was created to serve.</p>
+                <p class="privacy-reveal">tinker does not claim ownership over institutional data. tinker does not use institutional data as a commercial asset. tinker does not extract value from data outside the system's defined purpose. We operate as a processor and infrastructure provider — not a data owner. That role comes with obligations, not privileges.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="data-collection-minimal-purpose-bound" data-privacy-stage="collection">
+            <div class="privacy-section__grid">
+                <div class="privacy-section__intro">
+                    <span class="privacy-kicker privacy-reveal">Data Collection — Minimal and Purpose-Bound</span>
+                    <h2 class="privacy-heading privacy-reveal">We collect only what the system requires to function.</h2>
+                </div>
+                <div class="privacy-filter-visual privacy-reveal-card" aria-hidden="true">
+                    <div class="privacy-filter-strip">
+                        <span class="privacy-filter-dot rejected"></span>
+                        <span class="privacy-filter-dot rejected"></span>
+                        <span class="privacy-filter-dot passed"></span>
+                        <span class="privacy-filter-dot passed"></span>
+                        <span class="privacy-filter-dot rejected"></span>
+                        <span class="privacy-filter-dot passed"></span>
+                    </div>
+                    <div class="privacy-filter-gate"><span>Purpose-bound filter</span></div>
+                </div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">That includes student identifiers — name, class, institutional ID. Learning interaction data — progress, assessments, performance signals. Administrative and operational records. Parent-linked access credentials, for visibility purposes only.</p>
+                <p class="privacy-reveal">We do not collect unnecessary personal data, behavioural tracking unrelated to learning, external browsing data, or sensitive personal identifiers beyond institutional need. Every data point collected exists for a defined system function. If it does not serve that function, it is not collected. There is no secondary accumulation.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="purpose-limitation" data-privacy-stage="purpose">
+            <div class="privacy-purpose-rail privacy-reveal-card" aria-hidden="true">
+                <span class="privacy-purpose-enter">Intent</span>
+                <span class="privacy-purpose-flow"></span>
+                <span class="privacy-purpose-wall">Purpose boundary — no branching</span>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Purpose Limitation</span><h2 class="privacy-heading privacy-reveal">Purpose Limitation</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Data within tinker is processed strictly within its intended purpose: delivering personalised learning experiences, enabling institutional management and reporting, supporting AI-driven diagnostics and recommendations, and providing controlled visibility to authorised roles.</p>
+                <p class="privacy-reveal">Data is not repurposed. Not for advertising. Not for profiling outside the educational context. Not for resale. Not for external analytics unrelated to institutional use. There is no secondary use of institutional data — because there is no authorisation for one.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="data-storage-infrastructure-control" data-privacy-stage="isolation">
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Data Storage and Infrastructure Control</span><h2 class="privacy-heading privacy-reveal">All data is stored within controlled infrastructure environments.</h2></div>
+            <div class="privacy-tenant-grid privacy-reveal-card" aria-hidden="true">
+                <span>School A</span><span>School B</span><span>School C</span><span>School D</span>
+                <div class="privacy-tenant-probe" aria-hidden="true"></div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Institution-specific or logically isolated storage — no cross-institutional data mixing, no shared exposure layers. Data is encrypted at rest. Data is encrypted in transit. Access to stored data is not open. It is governed by strict access policies and continuous system validation.</p>
+                <p class="privacy-reveal">The data of one institution is structurally inaccessible to another. That is not a configuration. It is the architecture.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="access-control-data-visibility" data-privacy-stage="rbac">
+            <div class="privacy-section__grid">
+                <div class="privacy-section__intro">
+                    <span class="privacy-kicker privacy-reveal">Access Control and Data Visibility</span>
+                    <h2 class="privacy-heading privacy-reveal">Data access is defined by role and responsibility — and nothing else.</h2>
+                </div>
+                <div class="privacy-access-dash privacy-reveal-card" aria-hidden="true">
+                    <div class="privacy-access-tabs" role="tablist" aria-label="Role visibility simulation">
+                        <button type="button" class="privacy-access-tab" role="tab" id="privacy-tab-student" aria-selected="true" aria-controls="privacy-panel-student">Student</button>
+                        <button type="button" class="privacy-access-tab" role="tab" id="privacy-tab-teacher" aria-selected="false" aria-controls="privacy-panel-teacher">Teacher</button>
+                        <button type="button" class="privacy-access-tab" role="tab" id="privacy-tab-admin" aria-selected="false" aria-controls="privacy-panel-admin">Admin</button>
+                        <button type="button" class="privacy-access-tab" role="tab" id="privacy-tab-parent" aria-selected="false" aria-controls="privacy-panel-parent">Parent</button>
+                    </div>
+                    <div class="privacy-access-panels">
+                        <div class="privacy-access-panel is-active" role="tabpanel" id="privacy-panel-student" aria-labelledby="privacy-tab-student">
+                            <p><span class="ok">Own learning data</span></p>
+                            <p><span class="lock">Others' records</span></p>
+                        </div>
+                        <div class="privacy-access-panel" role="tabpanel" id="privacy-panel-teacher" aria-labelledby="privacy-tab-teacher" hidden>
+                            <p><span class="ok">Assigned students</span></p>
+                            <p><span class="lock">Institution-wide admin</span></p>
+                        </div>
+                        <div class="privacy-access-panel" role="tabpanel" id="privacy-panel-admin" aria-labelledby="privacy-tab-admin" hidden>
+                            <p><span class="ok">Operational scope within institution</span></p>
+                            <p><span class="lock">Unscoped visibility</span></p>
+                        </div>
+                        <div class="privacy-access-panel" role="tabpanel" id="privacy-panel-parent" aria-labelledby="privacy-tab-parent" hidden>
+                            <p><span class="ok">Child read-only visibility</span></p>
+                            <p><span class="lock">Other families' data</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Students access only their own learning data. Teachers access data of assigned students. Administrators access institution-wide operational data within their defined scope. Parents access read-only data tied to their child. There is no unrestricted data visibility within the system at any role level.</p>
+                <p class="privacy-reveal">Every access request is authenticated, authorised, and logged. Implicit access does not exist. All access is explicitly granted and continuously validated — not issued once and left unchecked.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="ai-and-data-usage" data-privacy-stage="ai">
+            <div class="privacy-ai-stack privacy-reveal-card" aria-hidden="true">
+                <div class="privacy-ai-zone"><span>AI processing</span><div class="privacy-ai-internal-loop"></div></div>
+                <div class="privacy-institution-slab"><span>Institution boundary</span><span class="privacy-ai-block"></span></div>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">AI and Data Usage</span><h2 class="privacy-heading privacy-reveal">AI systems within tinker operate under strict data boundaries.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">AI processes institutional data only within the institution's own environment. There is no cross-institutional data pooling. There is no external model training using institutional data. There is no data export to third-party AI systems.</p>
+                <p class="privacy-reveal">AI uses data for a defined set of purposes: to understand learning patterns, deliver personalised pathways, and identify gaps and recommend interventions. AI does not use data to train external models, generate unrelated outputs, or build datasets outside institutional control.</p>
+                <p class="privacy-reveal">The data stays within the governance boundary it was created under. That boundary does not flex to accommodate system convenience.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="data-retention-lifecycle" data-privacy-stage="lifecycle">
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Data Retention and Lifecycle</span><h2 class="privacy-heading privacy-reveal">Data is not stored indefinitely without purpose.</h2></div>
+            <div class="privacy-lifecycle privacy-reveal-card" aria-hidden="true">
+                <span>Collect</span><span>Use</span><span>Archive</span><span class="privacy-delete-phase">Delete</span>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Retention is governed by institutional agreements, operational necessity, and regulatory expectations. Data is retained only as long as required. It is archived under controlled conditions when necessary. It is deleted securely upon institutional request or upon contract termination.</p>
+                <p class="privacy-reveal">There is no indefinite accumulation. Data that no longer serves its defined function does not remain in the system.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="data-deletion-exit-control" data-privacy-stage="deletion">
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Data Deletion and Exit Control</span><h2 class="privacy-heading privacy-reveal">Institutions retain full authority over their data lifecycle — including its end.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Upon termination of services: data can be exported securely upon request, data is permanently deleted from active systems, and backup data is removed under controlled deletion cycles. Deletion is not partial. It is complete and irreversible within defined timelines.</p>
+                <p class="privacy-reveal">When an institution leaves, their data does not remain with us. That is not a policy concession. It is a structural commitment.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="cookies-tracking-analytics" data-privacy-stage="cookies">
+            <div class="privacy-section__grid">
+                <div class="privacy-section__intro">
+                    <span class="privacy-kicker privacy-reveal">Cookies, Tracking, and Analytics</span>
+                    <h2 class="privacy-heading privacy-reveal">tinker uses minimal, controlled tracking mechanisms.</h2>
+                </div>
+                <div class="privacy-cookie-panel privacy-reveal-card">
+                    <div class="privacy-toggle privacy-toggle--locked">
+                        <span>Essential</span>
+                        <span class="privacy-toggle-track" aria-hidden="true"><span class="privacy-toggle-thumb"></span></span>
+                        <span class="privacy-toggle-label">On (required)</span>
+                    </div>
+                    <button type="button" class="privacy-toggle privacy-toggle-analytics" id="privacyAnalyticsToggle" aria-pressed="false">
+                        <span>Analytics</span>
+                        <span class="privacy-toggle-track" aria-hidden="true"><span class="privacy-toggle-thumb"></span></span>
+                    </button>
+                </div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">On the website: essential cookies for functionality, and analytics tools to improve user experience. Behavioural tracking is limited to website interaction — it does not extend to student learning data at any point.</p>
+                <p class="privacy-reveal">Within the platform: no advertising trackers, no third-party behavioural tracking systems, no external data sharing. All tracking is purpose-specific, transparent, and non-intrusive. Users are informed and can control cookie preferences where applicable.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="third-party-access" data-privacy-stage="vendor">
+            <div class="privacy-gate-strip privacy-reveal-card" aria-hidden="true">
+                <span class="privacy-gate is-active">Contract</span>
+                <span class="privacy-gate">Security</span>
+                <span class="privacy-gate">Scope validation</span>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Third-Party Access</span><h2 class="privacy-heading privacy-reveal">tinker does not provide unrestricted third-party access to data.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Third-party involvement is limited to infrastructure providers — hosting, security layers — and essential system integrations where operationally required. All third-party access is contractually governed, security-audited, and restricted to the necessary scope.</p>
+                <p class="privacy-reveal">There is no open API access exposing sensitive data without strict authentication and system-level control.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="compliance-regulatory-alignment" data-privacy-stage="compliance">
+            <div class="privacy-section__grid">
+                <div class="privacy-section__intro">
+                    <span class="privacy-kicker privacy-reveal">Compliance and Regulatory Alignment</span>
+                    <h2 class="privacy-heading privacy-reveal">Compliance and Regulatory Alignment</h2>
+                </div>
+                <div class="privacy-compliance-visual privacy-reveal-card" aria-hidden="true">
+                    <svg class="privacy-map-outline" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M50 40 L120 25 L170 80 L165 150 L100 195 L35 140 Z" stroke="rgba(0,153,253,0.35)" stroke-width="1.2" fill="rgba(0,153,253,0.04)"/>
+                    </svg>
+                    <div class="privacy-compliance-rings"><span></span><span></span><span></span></div>
+                </div>
+            </div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">tinker operates within Pakistan's regulatory context and in alignment with its emerging data protection frameworks. Our internal standards are built to meet enterprise-grade global expectations — because the institutions we serve require that standard, and the students within them deserve it.</p>
+                <p class="privacy-reveal">We do not treat compliance as a ceiling. We treat it as a floor.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="user-rights-institutional-control" data-privacy-stage="hierarchy">
+            <div class="privacy-tree privacy-reveal-card" aria-hidden="true">
+                <span>Institution</span>
+                <span>Admin</span>
+                <span>Teacher</span>
+                <span>Student / Parent</span>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">User Rights and Institutional Control</span><h2 class="privacy-heading privacy-reveal">tinker does not bypass institutional authority.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">All data rights are exercised through the institution. Schools control student data access. Schools manage administrative permissions. Schools define retention policies within system capabilities. Parents and users interact with data through institution-defined access models.</p>
+                <p class="privacy-reveal">This ensures centralised governance, controlled access, and clear institutional accountability. The institution governs. The system serves that governance.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="security-foundation-privacy" data-privacy-stage="layered">
+            <div class="privacy-foundation-stack privacy-reveal-card" aria-hidden="true">
+                <span>Encryption</span><span>Access control</span><span>Monitoring</span><strong>Privacy</strong>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Security as the Foundation of Privacy</span><h2 class="privacy-heading privacy-reveal">Privacy cannot exist without security.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Every privacy guarantee we make is enforced through access control systems, encryption protocols, infrastructure isolation, and continuous monitoring.</p>
+                <p class="privacy-reveal">Privacy is not dependent on user behaviour or good intent. It is enforced through system design — the same way every other constraint in tinker is enforced. If it is not structural, it is not reliable.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="continuous-oversight" data-privacy-stage="oversight">
+            <div class="privacy-monitor privacy-reveal-card" aria-hidden="true">
+                <span>Flows audited</span><span>Policies current</span><span>Compliance signal</span><span>Reviews scheduled</span>
+            </div>
+            <div class="privacy-section__header"><span class="privacy-kicker privacy-reveal">Continuous Oversight</span><h2 class="privacy-heading privacy-reveal">Privacy is not static.</h2></div>
+            <div class="privacy-copy privacy-copy--wide">
+                <p class="privacy-reveal">Systems are reviewed regularly. Data flows are audited. Policies are updated as requirements evolve and as the system develops.</p>
+                <p class="privacy-reveal">tinker maintains continuous oversight to ensure data remains protected, usage remains within scope, and the system remains compliant and controlled. The standard does not degrade over time. It is maintained actively.</p>
+            </div>
+        </section>
+
+        <section class="privacy-section privacy-section--minimal" id="trust-defined-by-control" data-privacy-stage="trust">
+            <div class="privacy-minimal-copy">
+                <span class="privacy-kicker privacy-reveal">Trust, Defined by Control</span>
+                <h2 class="privacy-heading privacy-heading--center privacy-reveal">We do not define privacy through promises.</h2>
+                <div class="privacy-copy privacy-copy--center">
+                    <p class="privacy-reveal">We define it through clear data ownership, controlled system behaviour, enforced access boundaries, and measurable protection standards. Privacy is not declared. It is engineered — and it holds because the system enforces it, not because we ask it to be respected.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="privacy-section privacy-section--cta" id="explore-further" data-privacy-stage="explore">
+            <div class="privacy-cta-card privacy-reveal-card">
+                <span class="privacy-kicker">Explore Further</span>
+                <h2 class="privacy-heading">Explore Further</h2>
+                <div class="privacy-cta-links">
+                    <a href="security-user-safety.html#security-is-not-a-feature">Review system safeguards → Security &amp; User Safety</a>
+                    <a href="tinker-ai-governance.html#ai-governance-standard">Understand AI controls → AI Governance</a>
+                    <a href="contact.html">Discuss institutional deployment → Request Data Protection Briefing</a>
+                </div>
+                <div class="privacy-cta-actions"><a href="mailto:corporate@tinker.ai">corporate@tinker.ai</a><span>|</span><a href="contact.html" id="privacyBehaviorCta">Schedule a Strategic Briefing</a></div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer Section -->
+    <footer class="site-footer" id="siteFooter">
+        <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="arcGradient" x1="0%" y1="0%" x2="200%" y2="0%">
+                    <stop offset="0%" stop-color="#0099FD" />
+                    <stop offset="33%" stop-color="#30C70B" />
+                    <stop offset="66%" stop-color="#FEC000" />
+                    <stop offset="100%" stop-color="#0099FD" />
+                    <animate attributeName="x1" from="0%" to="-200%" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="x2" from="200%" to="0%" dur="2s" repeatCount="indefinite" />
+                </linearGradient>
+            </defs>
+            <!-- Blurred glowing path that tracks the gradient perfectly -->
+            <path id="arcGlow" class="arc-glow" d="M0,100 C480,0 960,0 1440,100" />
+            <!-- Smooth sine wave curve similar to the image -->
+            <path id="arcPath" class="arc-main" d="M0,100 C480,0 960,0 1440,100" />
+        </svg>
+        <div class="footer-container">
+            <div class="footer-top-grid">
+                <div class="footer-column reveal-item">
+                    <h4 class="footer-heading"><span class="heading-text"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Literacy</span></h4>
+                    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+                        <a href="visit-the-academy.html" class="footer-link">Visit the Academy</a>
+                        <a href="teachers-guide.html" class="footer-link">Teachers Guide</a>
+                        <a href="admin-guide.html" class="footer-link">Admin Guides</a>
+                        <a href="parents-alumni-guide.html" class="footer-link">Parents and Alumni Guide</a>
+                        <a href="students-guide.html" class="footer-link">Students Guide</a>
+                        <a href="free-resources.html" class="footer-link">Free Resources</a>
+                    </div>
+                </div>
+                <div class="footer-column reveal-item" style="transition-delay: 0.1s">
+                    <h4 class="footer-heading"><span class="heading-text">Uses</span></h4>
+                    <h5 class="footer-sub-heading">By persona</h5>
+                    <div class="footer-sub-links">
+                        <a href="decision-makers.html" class="footer-link">Decision-makers</a>
+                        <a href="teachers.html" class="footer-link">Teachers</a>
+                        <a href="students.html" class="footer-link">Students</a>
+                        <a href="admins.html" class="footer-link">Admin</a>
+                    </div>
+                    <a href="for-schools.html" class="footer-link" style="color: #000; font-weight: 700; margin-bottom: 20px;">For Schools</a>
+                    <br>
+                    <a href="for-learning.html" class="footer-link" style="color: #000; font-weight: 700;">For Learning</a>
+                </div>
+                <div class="footer-column reveal-item" style="transition-delay: 0.2s">
+                    <h4 class="footer-heading"><span class="heading-text">Products & Platform</span>
+                        <!-- Arrow down -->
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" style="margin-left: 4px;">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+                        <a href="tinker-world.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> World</a>
+                        <a href="tinker-kids.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Kids</a>
+                        <a href="tinker-ai-governance.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> AI and AI Governance</a>
+                        <a href="security-user-safety.html" class="footer-link">Security and Users Safety</a>
+                        <a href="privacy-data-protection.html" class="footer-link">Privacy and Data Protection</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-divider reveal-item" style="transition-delay: 0.3s">
+
+            <div class="footer-bottom-grid reveal-item" style="transition-delay: 0.4s">
+                <div class="footer-bottom-left">
+                    <img src="src/assets/images/Tinker Logo-17.svg" class="footer-logo-img" alt="Tinker Logo" style="height: 150px; width: auto; margin-left: -30px; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    
+                </div>
+                <div class="footer-bottom-links">
+                    <div class="footer-links-col">
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="press-releases.html" class="footer-link">Press Releases</a>
+                        <a href="newsroom.html" class="footer-link">Newsroom</a>
+                    </div>
+                    <div class="footer-links-col">
+                        <a href="help-faqs.html" class="footer-link">Help and FAQs</a>
+                        <a href="blogs.html" class="footer-link">Blogs</a>
+                        <a href="careers.html" class="footer-link">Careers</a>
+                    </div>
+                    <div class="footer-links-col">
+                        <a href="terms.html" class="footer-link">Terms of Service</a>
+                        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                                            </div>
+                </div>
+                
+            <div class="footer-bottom-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 20px;">
+    <div class="copyright-text" style="font-size: 0.85rem; color: #888; text-align: left;">
+        &copy; 2026 <span style="font-family: 'Baloo 2', sans-serif !important; color: #444; font-weight: 500; font-size: 1.15em;">tinker</span>. All Rights Reserved.
+    </div>
+    <div class="social-pill">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 1.926-6.98 6.26-.058 1.281-.072 1.688-.072 4.948s.014 3.666.072 4.947c.2 4.358 2.618 6.781 6.98 6.98 1.281.058 1.689.072 4.947.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-1.926 6.979-6.26.059-1.281.073-1.689.073-4.947 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                    </div>
+                  
+</div>
+</div>
+        </div>
+    </footer>
+
+</body>
+</html>

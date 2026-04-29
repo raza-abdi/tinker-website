@@ -3,283 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinker | Press Releases</title>
+    <title>tinker | tinker AI and AI Governance</title>
     <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Global Styles -->
     <style>
-        :root {
-            --nav-bg: rgba(255, 255, 255, 0.65);
-            --text-color: #000000;
-            --hover-color: #0099FD;
-            --glass-blur: 50px;
-            --accent1: #0099FD;
-            --accent2: #30C70B;
-            --accent3: #FEC000;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        /* Ambient background for glassmorphism */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle, rgba(0,153,253,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(48,199,11,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        /* Navbar Styling */
-        .navbar-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding-top: 2rem;
-            z-index: 10;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            opacity: 0;
-            transform: translateY(-50px) scale(0.9);
-        }
-
-        @media (min-width: 769px) {
-            .navbar-wrapper {
-                box-sizing: border-box;
-                padding-left: 120px;
-                padding-right: 120px;
-            }
-
-            .navbar {
-                max-width: min(1100px, calc(100vw - 420px));
-            }
-        }
-
-        @keyframes smoothPopDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .navbar {
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: visible;
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            transform-style: preserve-3d;
-            will-change: width, height, border-radius, transform;
-        }
-
-        .nav-item {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            position: relative;
-            transition: color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-        }
-
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--hover-color);
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.03);
-            border-radius: 30px;
-        }
-
-        /* Logo Glass Container */
-        .logo-glass {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            animation-delay: 0.1s;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none;
-        }
-
-        .logo-glass:hover {
-            transform: translateY(-2px) scale(1.05);
-        }
-
-        .logo-glass img {
-            height: 48px;
-            width: auto;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-            transform: scale(1.15);
-        }
-
-        /* Main Content */
-        .main-content {
-            position: relative;
-            z-index: 1;
-            padding-top: 7.5rem;
-            min-height: 100vh;
-        }
-
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Page Content */
-        .page-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .page-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin: 0 0 2rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        @keyframes gradientScroll {
-            0% { background-position: 0% center; }
-            100% { background-position: -200% center; }
-        }
-
-        .page-description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.7);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .coming-soon-card {
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 2rem auto;
-        }
-
-        .coming-soon-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 1rem;
-            color: var(--accent1);
-        }
-
-        .coming-soon-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .logo-glass {
-                top: 1.5rem;
-                left: 1.5rem;
-                width: 56px;
-                height: 56px;
-            }
-
-            .logo-glass img {
-                height: 38px;
-            }
-
-            .navbar-wrapper {
-                padding-top: 1.5rem;
-            }
-
-            .page-section {
-                padding: 2rem 1rem;
-            }
-
-            .coming-soon-card {
-                margin: 1rem auto;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #ffffff; font-family: 'Montserrat', sans-serif; }
     </style>
     <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/ai-governance.css">
     <script src="src/js/global-nav.js" defer></script>
-
+    <script src="src/js/ai-governance.js" type="module" defer></script>
 
 </head>
 <body>
@@ -300,8 +34,8 @@
     <!-- Center Navbar -->
     <div class="navbar-wrapper">
         <nav class="navbar" id="navbar">
-            <a href="index.html" class="nav-item active"><span class="nav-text">Home</span></a>
-            <div class="nav-item products-dropdown">
+            <a href="index.html" class="nav-item"><span class="nav-text">Home</span></a>
+            <div class="nav-item products-dropdown active">
                 <span class="nav-text">Products</span>
                 <div class="dropdown-arrow"></div>
                 <div class="products-dropdown-panel">
@@ -310,7 +44,7 @@
                         <p>AI-native Personalized Learning Suite</p>
                         <img src="src/assets/product_dropdown_Assets/TINKER_kids.gif" alt="" class="product-card-bg-gif">
                     </a>
-                    <a href="novelty-in-tinker.html" class="product-card product-card--novelty align-right align-top" style="--delay: 0.1s;">
+                    <a href="tinker-ai-governance.html#tinker-ai" class="product-card product-card--novelty align-right align-top" style="--delay: 0.1s;">
                         <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
                         <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
                         <img src="src/assets/product_dropdown_Assets/novelty.gif" alt="" class="product-card-bg-gif center">
@@ -336,10 +70,10 @@
                             <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
                             <p>AI-native Personalized Learning Suite</p>
                         </div>
-                        <div class="uses-card" style="--delay: 0.1s; --slide-x: 0px;">
+                        <a href="tinker-ai-governance.html#tinker-ai" class="uses-card" style="--delay: 0.1s; --slide-x: 0px; text-decoration: none; color: inherit;">
                             <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
                             <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
-                        </div>
+                        </a>
                         <div class="uses-card" style="--delay: 0.15s; --slide-x: 0px;">
                             <h4><span class="dropdown-tinker">tinker</span> World</h4>
                             <p>AI-native School Management Suite</p>
@@ -369,10 +103,10 @@
                                 <h4><span class="dropdown-tinker">tinker</span> World</h4>
                                 <p>AI-native School Management Suite</p>
                             </div>
-                            <div class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px;">
+                            <a href="tinker-ai-governance.html#tinker-ai" class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px; text-decoration: none; color: inherit;">
                                 <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
                                 <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
-                            </div>
+                            </a>
                             <div class="uses-card align-right" style="--delay: 0.24s; --slide-x: 12px;">
                                 <h4>Features</h4>
                                 <p>Explores the flagship features that helps every child.</p>
@@ -447,26 +181,219 @@
             </div>
         </nav>
     </div>
+    <main class="ai-governance-page" id="ai-governance-top">
+        <div class="ai-progress" aria-hidden="true"><span class="ai-progress__bar"></span></div>
 
-    <main class="main-content">
-        <div class="content-wrapper">
-            <section class="page-section">
-                <h1 class="page-title">Press Releases</h1>
-                <p class="page-description">
-                    Stay updated with the latest announcements, milestones, and news from tinker. 
-                    Our press releases provide insights into our mission to transform education through AI-powered learning.
-                </p>
-                
-                <div class="coming-soon-card">
-                    <h3 class="coming-soon-title">Coming Soon</h3>
-                    <p class="coming-soon-text">
-                        Our press releases section is currently under development. 
-                        Check back soon for the latest updates and announcements from tinker.
-                    </p>
+        <nav class="ai-rail" aria-label="AI governance page sections">
+            <a href="#tinker-ai" class="ai-rail__link active">01</a>
+            <a href="#intelligence-design" class="ai-rail__link">02</a>
+            <a href="#agentic-architecture" class="ai-rail__link">03</a>
+            <a href="#two-levels" class="ai-rail__link">04</a>
+            <a href="#ai-governance-standard" class="ai-rail__link">05</a>
+            <a href="#core-governance-principles" class="ai-rail__link">06</a>
+            <a href="#safety-architecture" class="ai-rail__link">07</a>
+            <a href="#institutional-control" class="ai-rail__link">08</a>
+            <a href="#role-of-ai" class="ai-rail__link">09</a>
+            <a href="#trust-design" class="ai-rail__link">10</a>
+            <a href="#explore-further" class="ai-rail__link">11</a>
+        </nav>
+
+        <section class="ai-section ai-hero" id="tinker-ai" data-ai-section="tinker-ai">
+            <div class="ai-hero__scene" id="aiHeroScene" aria-hidden="true">
+                <div class="ai-core-fallback"><span></span><span></span><span></span></div>
+            </div>
+            <div class="ai-hero__content">
+                <span class="ai-kicker ai-reveal">tinker AI</span>
+                <h1 class="ai-title ai-reveal">This is not a feature. It is the foundation.</h1>
+                <div class="ai-copy ai-copy--lead">
+                    <p class="ai-reveal">Every module in tinker.world. Every learning path in tinker.kids. Every diagnostic, every adaptive response, every insight surfaced to an educator or administrator — it all runs on one intelligence infrastructure. tinker AI is not layered on top of the product. It is what the product is built from.</p>
+                    <p class="ai-reveal">AI-native, agentic, multi-agent by architecture. Purpose-built for education as a system — not as content delivery, not as a chatbot, not as a supplementary tool. As a structural intelligence layer that governs how learning is understood, tracked, and delivered across the entire institution.</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section class="ai-section ai-section--flow" id="intelligence-flow" data-ai-section="intelligence-flow">
+            <div class="ai-section__grid">
+                <div class="ai-section__intro">
+                    <span class="ai-kicker ai-reveal">Infrastructure Core</span>
+                    <h2 class="ai-heading ai-reveal">Every module runs on one intelligence.</h2>
+                </div>
+                <div class="ai-flow-map ai-reveal-card" aria-hidden="true">
+                    <div class="ai-flow-node">tinker.world</div>
+                    <div class="ai-flow-core">tinker AI</div>
+                    <div class="ai-flow-node">tinker.kids</div>
+                    <span class="ai-flow-line ai-flow-line--left"></span>
+                    <span class="ai-flow-line ai-flow-line--right"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="ai-section" id="intelligence-design" data-ai-section="intelligence-design">
+            <div class="ai-section__header">
+                <span class="ai-kicker ai-reveal">Intelligence by Design</span>
+                <h2 class="ai-heading ai-reveal">Two systems. One purpose.</h2>
+            </div>
+            <div class="ai-intelligence-grid">
+                <article class="ai-system-card ai-reveal-card">
+                    <div class="ai-neural-mesh" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <h3>Quasar-3 — Cognitive Intelligence Model</h3>
+                    <p>Quasar-3 is designed to understand how learning happens — not just what was answered.</p>
+                    <p>There is a meaningful difference between a student who has memorised a process and a student who has understood it. Quasar-3 identifies that difference. It detects conceptual gaps, maps where understanding breaks down across subjects, and adjusts the learning trajectory in real time — not as a response to test scores, but as a response to cognition.</p>
+                    <p>It does not generate blindly. It evaluates, interprets, and responds with intelligence aligned to the learner it is working with.</p>
+                </article>
+                <article class="ai-system-card ai-reveal-card">
+                    <div class="ai-path-system" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <h3>ALI-ACE™ — Personalised Learning Architecture</h3>
+                    <p>ALI-ACE is the adaptive layer responsible for each student's individual learning path. It maps learning patterns, tracks retention and velocity, and reconstructs a personalised pathway continuously — not periodically.</p>
+                    <p>It operates at the level of student cognition. Not surface preferences. Not generalised groupings. The specific way a specific student processes a specific type of knowledge — and what that means for how they should encounter the next one.</p>
+                    <p>Together, Quasar-3 and ALI-ACE form a unified system: continuous, adaptive, measurable personalised learning — at institutional scale.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="ai-section ai-section--agents" id="agentic-architecture" data-ai-section="agentic-architecture">
+            <div class="ai-section__header">
+                <span class="ai-kicker ai-reveal">Agentic AI System Architecture</span>
+                <h2 class="ai-heading ai-reveal">Specialised agents. Defined boundaries. Continuous intelligence.</h2>
+            </div>
+            <div class="ai-agent-map ai-reveal-card" aria-hidden="true">
+                <div class="ai-agent-core">tinker AI</div>
+                <span class="ai-agent-connector" style="--node-angle: 0deg;"></span>
+                <span class="ai-agent-connector" style="--node-angle: 72deg;"></span>
+                <span class="ai-agent-connector" style="--node-angle: 144deg;"></span>
+                <span class="ai-agent-connector" style="--node-angle: 216deg;"></span>
+                <span class="ai-agent-connector" style="--node-angle: 288deg;"></span>
+                <div class="ai-agent-node" style="--node-angle: 0deg;">Curriculum</div>
+                <div class="ai-agent-node" style="--node-angle: 72deg;">Assessment</div>
+                <div class="ai-agent-node" style="--node-angle: 144deg;">Diagnostic</div>
+                <div class="ai-agent-node" style="--node-angle: 216deg;">Recommendation</div>
+                <div class="ai-agent-node" style="--node-angle: 288deg;">Institutional</div>
+            </div>
+            <div class="ai-agent-copy">
+                <p class="ai-reveal">tinker AI operates as a multi-agent system. Specialised agents perform distinct roles within the ecosystem — each purposeful, each governed, each operating within defined boundaries.</p>
+                <p class="ai-reveal"><strong>Curriculum Agents</strong> transform curriculum into structured learning flows — coherent, sequenced, and institutionally aligned.</p>
+                <p class="ai-reveal"><strong>Assessment Agents</strong> generate and evaluate assessments dynamically — calibrated to the student's current cognitive state, not a fixed rubric.</p>
+                <p class="ai-reveal"><strong>Diagnostic Agents</strong> identify gaps and learning inefficiencies before they compound. The system does not wait for a student to fall behind. It identifies the pattern before the outcome.</p>
+                <p class="ai-reveal"><strong>Recommendation Agents</strong> adjust student pathways in real time — responding to learning velocity, retention data, and diagnostic signals simultaneously.</p>
+                <p class="ai-reveal"><strong>Institutional Agents</strong> surface aggregated intelligence to educators and administrators — curriculum effectiveness, cohort-level patterns, and decision-relevant insights, not raw data.</p>
+                <p class="ai-reveal">This is not a static tool. It is a living, responsive intelligence layer that operates continuously across every student, every class, every institution.</p>
+            </div>
+        </section>
+
+        <section class="ai-section" id="two-levels" data-ai-section="two-levels">
+            <div class="ai-section__header">
+                <span class="ai-kicker ai-reveal">Built for Two Levels at Once</span>
+                <h2 class="ai-heading ai-reveal">Student cognition and institutional visibility, connected.</h2>
+            </div>
+            <div class="ai-dual-grid">
+                <article class="ai-level-card ai-level-card--student ai-reveal-card">
+                    <h3>At the student level</h3>
+                    <p>personalised pathways, adaptive assessments, real-time feedback loops. Every learner receives intelligence shaped around their cognition, not around a class average.</p>
+                </article>
+                <article class="ai-level-card ai-level-card--institution ai-reveal-card">
+                    <h3>At the institutional level</h3>
+                    <p>aggregated learning insights, curriculum effectiveness tracking, administrative decision support. Leadership and faculty receive the intelligence they need to govern well — not reports extracted after the fact, but live systemic visibility.</p>
+                </article>
+            </div>
+            <p class="ai-wide-copy ai-reveal">tinker AI does not separate the student from the institution. It operates at both levels simultaneously.</p>
+            <p class="ai-wide-copy ai-reveal">This dual-layer design ensures that intelligence is not isolated. It is systemically integrated — connecting what happens in a single lesson to what the institution understands about its overall performance.</p>
+        </section>
+
+        <section class="ai-section ai-section--governance" id="ai-governance-standard" data-ai-section="ai-governance-standard">
+            <div class="ai-section__grid">
+                <div class="ai-section__intro">
+                    <span class="ai-kicker ai-reveal">AI Governance — Our Operating Standard</span>
+                    <h2 class="ai-heading ai-reveal">tinker AI does not operate unchecked.</h2>
+                </div>
+                <div class="ai-constraint-box ai-reveal-card">
+                    <p>Every output exists within defined policy, constraint, and validation layers. Control is not a feature added to make institutions comfortable. It is the architectural standard from which every AI function is built.</p>
+                    <p>Our governance framework ensures four things: control over AI behaviour, transparency in system outputs, accountability in decision-making, and alignment with institutional and ethical standards. These are not aspirational commitments. They are structural requirements — enforced by design, not by policy documents alone.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="ai-section ai-section--principles" id="core-governance-principles" data-ai-section="core-governance-principles">
+            <div class="ai-section__header">
+                <span class="ai-kicker ai-reveal">Core Governance Principles</span>
+                <h2 class="ai-heading ai-reveal">Locked panels for controlled intelligence.</h2>
+            </div>
+            <div class="ai-governance-panels">
+                <article class="ai-lock-panel ai-reveal-card"><h3>Controlled Intelligence</h3><p>AI operates within defined system boundaries. No uncontrolled generation. No unverified outputs. No deviation from curriculum-aligned logic. The system does not produce what it is not authorised to produce.</p></article>
+                <article class="ai-lock-panel ai-reveal-card"><h3>Human-Aware Oversight</h3><p>Educators and institutions retain visibility into AI decisions, authority to intervene, and control over system configurations. tinker AI supports institutional responsibility. It does not replace it.</p></article>
+                <article class="ai-lock-panel ai-reveal-card"><h3>Data Responsibility</h3><p>Student data is treated as sensitive institutional data — not as a commodity, not as a training asset, not as a product. Minimal collection, purpose-bound processing, secure access control. Every data decision is governed by the same principle: the student's data belongs to the student's institution.</p></article>
+                <article class="ai-lock-panel ai-reveal-card"><h3>Explainability by Design</h3><p>Every major AI-driven outcome is traceable, interpretable, and contextualised. Institutions understand not just what the system decided — but why. Opacity is not acceptable in a system that governs how children learn.</p></article>
+                <article class="ai-lock-panel ai-reveal-card"><h3>Continuous Monitoring and Auditing</h3><p>tinker AI systems are monitored for performance and drift, evaluated against defined benchmarks, and updated under controlled release cycles. The system does not deploy and disappear. It is continuously held to the standard it was built to meet.</p></article>
+            </div>
+        </section>
+
+        <section class="ai-section" id="safety-architecture" data-ai-section="safety-architecture">
+            <div class="ai-section__grid">
+                <div class="ai-section__intro">
+                    <span class="ai-kicker ai-reveal">Safety by Architecture</span>
+                    <h2 class="ai-heading ai-reveal">Safety is structural.</h2>
+                </div>
+                <div class="ai-safety-ring ai-reveal-card" aria-hidden="true"><span>Curriculum-bound</span><span>Age-appropriate</span><span>Guardrails</span><span>Role-based access</span></div>
+            </div>
+            <div class="ai-copy ai-copy--wide">
+                <p class="ai-reveal">Safety is not a layer added to tinker AI. It is embedded at the system level from the ground up.</p>
+                <p class="ai-reveal">Curriculum-bound outputs. Age-appropriate content constraints. Behavioural guardrails for every student interaction. Role-based access control across all user types — students, teachers, administrators, parents.</p>
+                <p class="ai-reveal">Each of these is not a setting. It is a structural constraint that cannot be bypassed by user behaviour or system drift.</p>
+            </div>
+        </section>
+
+        <section class="ai-section" id="institutional-control" data-ai-section="institutional-control">
+            <div class="ai-section__header">
+                <span class="ai-kicker ai-reveal">Institutional Control</span>
+                <h2 class="ai-heading ai-reveal">The institution governs the system context.</h2>
+            </div>
+            <div class="ai-role-map ai-reveal-card" aria-hidden="true"><span>Student</span><span>Teacher</span><span>Admin</span><span>Parent</span></div>
+            <div class="ai-copy ai-copy--wide">
+                <p class="ai-reveal">Schools operating with tinker retain policy-level configuration over AI behaviour. The institution decides how the system is configured for its context — its curriculum, its student population, its governance standards.</p>
+                <p class="ai-reveal">Administrators have visibility into system-wide intelligence metrics. Every role — student, teacher, school admin, parent — operates within an access structure the institution controls. tinker AI operates within the institution's governance framework. Not outside it. Not around it.</p>
+            </div>
+        </section>
+
+        <section class="ai-section ai-section--philosophy" id="role-of-ai" data-ai-section="role-of-ai">
+            <div class="ai-philosophy-block">
+                <span class="ai-kicker ai-reveal">The Role of AI in Education — Our Position</span>
+                <h2 class="ai-heading ai-reveal">tinker does not view AI as a replacement for educators.</h2>
+                <p class="ai-reveal">Its role is precisely defined: enhance clarity, reduce inefficiency, enable personalised scale, and support informed decision-making. The objective is not automation. It is intelligent augmentation of the entire educational system — so that educators can do what only educators can do, and the system handles what should never have required human time in the first place.</p>
+                <p class="ai-reveal">AI that operates without this clarity of purpose is not an educational tool. It is a liability. tinker AI is built with a clear purpose, a defined boundary, and a governance structure that ensures it operates within both.</p>
+            </div>
+        </section>
+
+        <section class="ai-section" id="trust-design" data-ai-section="trust-design">
+            <div class="ai-section__grid">
+                <div class="ai-section__intro">
+                    <span class="ai-kicker ai-reveal">Trust, by Design</span>
+                    <h2 class="ai-heading ai-reveal">Trust is not requested. It is built.</h2>
+                </div>
+                <div class="ai-stabilizer ai-reveal-card" aria-hidden="true"><span>Controlled system behaviour</span><span>Transparent governance</span><span>Responsible data practices</span><span>Measurable outcomes</span></div>
+            </div>
+            <div class="ai-copy ai-copy--wide">
+                <p class="ai-reveal">Trust is not requested. It is built — through controlled system behaviour, transparent governance, responsible data practices, and measurable outcomes.</p>
+                <p class="ai-reveal">tinker AI is designed for environments where precision, responsibility, and reliability are non-negotiable. Not because those environments demand reassurance. Because they demand performance.</p>
+            </div>
+        </section>
+
+        <section class="ai-section ai-section--cta" id="explore-further" data-ai-section="explore-further">
+            <div class="ai-cta-card ai-reveal-card">
+                <span class="ai-kicker">Explore Further</span>
+                <h2 class="ai-heading">Explore Further</h2>
+                <div class="ai-cta-links">
+                    <a href="features.html">Understand the Learning System</a>
+                    <a href="for-schools.html">Explore Institutional Capabilities</a>
+                    <a href="security-user-safety.html#security-is-not-a-feature">Review Security &amp; Data Protection</a>
+                </div>
+                <div class="ai-cta-actions">
+                    <a href="mailto:corporate@tinker.ai">corporate@tinker.ai</a>
+                    <span class="ai-cta-separator">|</span>
+                    <a href="contact.html" id="aiBehaviorCta">Schedule a Strategic Briefing</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <!-- Footer Section -->
     <footer class="site-footer" id="siteFooter">
         <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -521,7 +448,7 @@
                     <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
                         <a href="tinker-world.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> World</a>
                         <a href="tinker-kids.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Kids</a>
-                        <a href="tinker-ai-governance.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> AI and AI Governance</a>
+                        <a href="tinker-ai-governance.html#ai-governance-standard" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> AI and AI Governance</a>
                         <a href="security-user-safety.html" class="footer-link">Security and Users Safety</a>
                         <a href="privacy-data-protection.html" class="footer-link">Privacy and Data Protection</a>
                     </div>

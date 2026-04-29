@@ -2560,10 +2560,178 @@
             }
         }
     </style>
-    <script src="components/inject-components.js"></script>
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/company.css">
+    <script src="src/js/global-nav.js" defer></script>
+    <script src="src/js/company.js" type="module" defer></script>
+
 
 </head>
 <body>
+    <!-- Separate Logo Container -->
+    <a href="index.html" class="logo-glass">
+        <!-- SVG Logo -->
+        <img src="src/assets/images/logo.svg" alt="Tinker Logo" onerror="this.onerror=null; console.error('SVG not found')">
+    </a>
+
+    <!-- Behavioral CTA System (Right side space) -->
+    <div class="dynamic-cta-wrapper">
+        <div class="attention-orb"></div>
+        <button class="dynamic-cta">
+            <span class="cta-text-wrapper"><span class="cta-text show" id="ctaText">Ready? Partner Now</span></span>
+        </button>
+    </div>
+
+    <!-- Center Navbar -->
+    <div class="navbar-wrapper">
+        <nav class="navbar" id="navbar">
+            <a href="index.html" class="nav-item"><span class="nav-text">Home</span></a>
+            <div class="nav-item products-dropdown">
+                <span class="nav-text">Products</span>
+                <div class="dropdown-arrow"></div>
+                <div class="products-dropdown-panel">
+                    <a href="tinker-kids.html" class="product-card product-card--kids align-top" style="--delay: 0.05s;">
+                        <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                        <p>AI-native Personalized Learning Suite</p>
+                        <img src="src/assets/product_dropdown_Assets/TINKER_kids.gif" alt="" class="product-card-bg-gif">
+                    </a>
+                    <a href="novelty-in-tinker.html" class="product-card product-card--novelty align-right align-top" style="--delay: 0.1s;">
+                        <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                        <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                        <img src="src/assets/product_dropdown_Assets/novelty.gif" alt="" class="product-card-bg-gif center">
+                    </a>
+                    <a href="tinker-world.html" class="product-card product-card--world align-bottom" style="--delay: 0.15s;">
+                        <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                        <p>AI-native School Management Suite</p>
+                        <img src="src/assets/product_dropdown_Assets/tinker_wordl.gif" alt="" class="product-card-bg-gif">
+                    </a>
+                    <a href="features.html" class="product-card product-card--features align-bottom" style="--delay: 0.2s;">
+                        <h4>Features</h4>
+                        <p>Explores the flagship features that helps every child.</p>
+                        <img src="src/assets/product_dropdown_Assets/feature.gif" alt="" class="product-card-bg-gif right-center">
+                    </a>
+                    <a href="tinker-literacy.html" class="product-card product-card--literacy align-right align-bottom" style="--delay: 0.25s;">
+                        <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                        <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                        <img src="src/assets/product_dropdown_Assets/tinker%20literacy.gif" alt="" class="product-card-bg-gif literacy-center">
+                    </a>
+
+                    <div class="products-mobile-stack">
+                        <div class="uses-card" style="--delay: 0.05s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                            <p>AI-native Personalized Learning Suite</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.1s; --slide-x: 0px;">
+                            <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                            <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.15s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                            <p>AI-native School Management Suite</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.2s; --slide-x: 0px;">
+                            <h4>Features</h4>
+                            <p>Explores the flagship features that helps every child.</p>
+                        </div>
+                        <div class="uses-card" style="--delay: 0.25s; --slide-x: 0px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                            <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item uses-dropdown products-mobile-only">
+                <span class="nav-text">Products</span>
+                <div class="dropdown-arrow"></div>
+                <div class="uses-dropdown-panel">
+                    <div class="uses-dropdown-grid">
+                        <div class="uses-card large" style="--delay: 0.08s; --slide-x: -12px;">
+                            <h4><span class="dropdown-tinker">tinker</span> Kids</h4>
+                            <p>AI-native Personalized Learning Suite</p>
+                        </div>
+                        <div class="uses-dropdown-stack">
+                            <div class="uses-card align-right" style="--delay: 0.14s; --slide-x: 12px;">
+                                <h4><span class="dropdown-tinker">tinker</span> World</h4>
+                                <p>AI-native School Management Suite</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px;">
+                                <h4>Novelty In <span class="dropdown-tinker">tinker</span></h4>
+                                <p><span class="dropdown-tinker">tinker</span> AI's Quasar 3 - the world's first cognitive learning AI-model, multi-agent AI learning system, powered by the ALI-ACE personalization algorithm.</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.24s; --slide-x: 12px;">
+                                <h4>Features</h4>
+                                <p>Explores the flagship features that helps every child.</p>
+                            </div>
+                            <div class="uses-card align-right" style="--delay: 0.28s; --slide-x: 12px;">
+                                <h4><span class="dropdown-tinker">tinker</span> Literacy for Users</h4>
+                                <p>Get your employees hands-on at <span class="dropdown-tinker">tinker</span>'s Ecosystem for Free.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-item uses-dropdown">
+                <span class="nav-text">Uses</span>
+                <div class="dropdown-arrow"></div>
+                <div class="uses-dropdown-panel">
+                    <div class="uses-dropdown-grid">
+                        <a href="by-persona.html" class="uses-card large" style="--delay: 0.08s; --slide-x: -12px;; text-decoration: none; color: inherit;">
+                        <h4>By persona</h4>
+                            <p>Get most of <span class="dropdown-tinker">tinker</span> according to you. For Executives, teachers, and Influencer</p>
+                        </a>
+                        <div class="uses-dropdown-stack">
+                            <a href="for-schools.html" class="uses-card align-right" style="--delay: 0.14s; --slide-x: 12px;" style="text-decoration:none;color:inherit;">
+                            <h4>For Schools</h4>
+                                <p>AI-Native STEM-based learning and operations management</p>
+                            </a>
+                            <a href="for-learning.html" class="uses-card align-right" style="--delay: 0.2s; --slide-x: 12px;" style="text-decoration:none;color:inherit;">
+                            <h4>For Learning</h4>
+                                <p>Child-safe AI-based personalized learning</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="start-learning.html" class="nav-item btn-start"><span class="nav-text">Start Learning</span></a>
+            
+            <a href="pricing.html" class="nav-item"><span class="nav-text">Pricing</span></a>
+            <div class="nav-item company-dropdown active">
+                <span class="nav-text">Company</span>
+                <div class="dropdown-arrow"></div>
+                <div class="company-dropdown-panel">
+                    <div class="company-dropdown-grid">
+                        <a href="company.html#how-tinker-sees-itself" class="company-card" style="--delay: 0.04s;; text-decoration: none; color: inherit;"><h4>How does tinker see itself?</h4></a>
+                        <a href="company.html#founding-vision" class="company-card" style="--delay: 0.08s;; text-decoration: none; color: inherit;"><h4>Founding Vision</h4></a>
+                        <a href="company.html#mission" class="company-card" style="--delay: 0.12s;; text-decoration: none; color: inherit;"><h4>Mission</h4></a>
+                        <a href="company.html#our-values" class="company-card" style="--delay: 0.16s;; text-decoration: none; color: inherit;"><h4>Our Values</h4></a>
+                        <a href="company.html#leadership-governance" class="company-card" style="--delay: 0.2s;; text-decoration: none; color: inherit;"><h4>Leadership and Governance</h4></a>
+                        <a href="company.html#guiding-principles" class="company-card" style="--delay: 0.24s;; text-decoration: none; color: inherit;"><h4>tinker Guiding Principles</h4></a>
+                        <a href="company.html#student-learning" class="company-card" style="--delay: 0.28s;; text-decoration: none; color: inherit;"><h4>How do we see students learning?</h4></a>
+                        <a href="company.html#what-matters" class="company-card" style="--delay: 0.32s;; text-decoration: none; color: inherit;"><h4>What matters to us?</h4></a>
+                        <a href="company.html#philosophy-schools" class="company-card" style="--delay: 0.36s;; text-decoration: none; color: inherit;"><h4>Our philosophy for schools</h4></a>
+                        <a href="company.html#tinker-way" class="company-card" style="--delay: 0.4s;; text-decoration: none; color: inherit;"><h4>Our redefining approach &mdash; the tinker way.</h4></a>
+                        <a href="company.html#impact" class="company-card" style="--delay: 0.44s;; text-decoration: none; color: inherit;"><h4>Impact</h4></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile CTA Injected inside burger -->
+            <div class="mobile-dynamic-cta-wrapper">
+                <div class="attention-orb"></div>
+                <button class="dynamic-cta mobile-dynamic-cta">
+                    <span class="cta-text-wrapper"><span class="cta-text show">Ready? Partner Now</span></span>
+                </button>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div>
 
     <!-- Persona Notifier System (Bottom Appears) -->
     <div id="personaNotifier" class="persona-notifier">
@@ -2617,15 +2785,165 @@
             <div class="splash-progress"></div>
         </div>
     </div>
-    <div id="global-header"></div>
 
-    <!-- Blank Pricing Section -->
-    <section style="min-height: 70vh; background-color: #ffffff;"></section>
-    <div id="global-footer"></div>
+    <main class="company-page" id="company-top">
+        <div class="company-progress" aria-hidden="true"><span class="company-progress__bar"></span></div>
+
+        <nav class="company-rail" aria-label="Company page sections">
+            <a href="#how-tinker-sees-itself" class="company-rail__link active">01</a>
+            <a href="#founding-vision" class="company-rail__link">02</a>
+            <a href="#mission" class="company-rail__link">03</a>
+            <a href="#our-values" class="company-rail__link">04</a>
+            <a href="#leadership-governance" class="company-rail__link">05</a>
+            <a href="#guiding-principles" class="company-rail__link">06</a>
+            <a href="#student-learning" class="company-rail__link">07</a>
+            <a href="#what-matters" class="company-rail__link">08</a>
+            <a href="#philosophy-schools" class="company-rail__link">09</a>
+            <a href="#tinker-way" class="company-rail__link">10</a>
+            <a href="#impact" class="company-rail__link">11</a>
+            <a href="#office-contact" class="company-rail__link">12</a>
+        </nav>
+
+        <section class="company-hero company-section" id="how-tinker-sees-itself" data-section="how-tinker-sees-itself">
+            <div class="company-bg company-bg--hero" data-parallax="0.18"></div>
+            <div class="company-orbit" id="companyThreeScene" aria-hidden="true"><div class="company-orbit__fallback"><span></span><span></span><span></span></div></div>
+            <div class="company-hero__content">
+                <span class="company-kicker reveal-text">tinker — Company</span>
+                <h1 class="company-title reveal-text">How tinker sees itself</h1>
+                <figure class="company-quote company-quote--hero reveal-card"><blockquote><p><em>"Were people aware of what lies in the obtainment of knowledge, they would pursue it even though they had to make voyages and endanger their lives to obtain it."</em></p></blockquote><figcaption>— Imam Sajjad (AS) | Usul al-Kafi, Vol. 1, p. 35</figcaption></figure>
+                <div class="company-copy company-copy--lead">
+                    <p class="reveal-text">We see ourselves in that pursuit. Thriving, striving — every decision, every system, every line of architecture — drawn toward the fulfilment of one vision.</p>
+                    <p class="reveal-text">We are hard workers. Men of our word. Honest to our purpose, accountable to our commitment. We do not drift from what we set out to build.</p>
+                    <p class="reveal-text">The Commander of the Faithful, al-Imam Ali (AS), said it plainly:</p>
+                </div>
+                <figure class="company-quote reveal-card"><blockquote><p><em>"The worth of a man is according to his knowledge."</em></p></blockquote><figcaption>— Nahj al-Balagha, Hikmah 81</figcaption></figure>
+                <div class="company-copy company-copy--lead">
+                    <p class="reveal-text">tinker exists to ensure every child increases in worth — not by market measure, but by the measure that endures. That is the foundation of everything we build.</p>
+                    <p class="company-statement reveal-text"><strong>Belong to every child.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="company-section company-section--path" id="founding-vision" data-section="founding-vision">
+            <div class="company-section__grid">
+                <div class="company-section__intro">
+                    <span class="company-kicker reveal-text">Founding Vision</span>
+                    <h2 class="company-heading reveal-text">Founding Vision</h2>
+                    <figure class="company-quote reveal-card"><blockquote><p><em>"My Lord! Increase me in knowledge."</em></p></blockquote><figcaption>— Surah Taha, 20:114</figcaption></figure>
+                </div>
+                <div class="company-copy company-path-copy">
+                    <div class="company-path-line" aria-hidden="true"></div>
+                    <p class="reveal-text">This is where tinker was founded. Not in a pitch deck. Not in a market gap analysis. In an ayah.</p>
+                    <p class="reveal-text">Knowledge, in its truest form, is not a transaction. It is a path — towards truth, towards purpose, towards knowing the Creator and through that knowing, seeing all of creation clearly. A student who truly learns does not merely accumulate information. They come to see the world through the lens of the One who made it.</p>
+                    <p class="reveal-text">Every discipline falls within this. Science, mathematics, language, systems — all of it belongs to a greater whole when seen by those who see, heard by those who hear, understood by those who seek. Knowledge is a living thing. Its purpose is not worldly gain alone. It is the unlocking of a person's truest nature — as a creation with meaning, inside a world with purpose.</p>
+                    <p class="reveal-text">That is the vision. Every student, in every subject, arriving at knowledge that is purposeful, honest, and tied to something greater than utility.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="company-section company-section--mission" id="mission" data-section="mission">
+            <div class="company-bg company-bg--mesh" data-parallax="0.1"></div>
+            <div class="company-section__grid">
+                <div class="company-section__intro"><span class="company-kicker reveal-text">Mission</span><h2 class="company-heading reveal-text">Mission</h2></div>
+                <div class="company-copy">
+                    <p class="reveal-text">To fulfil that vision, tinker operates at the frontier — building what no competitor is building, delivering what no institution currently has access to.</p>
+                    <p class="reveal-text">We build the most novel, most adaptive, most intelligent AI-native educational infrastructure for modern institutions. Not incremental improvement. Not feature parity. An entirely different category.</p>
+                    <p class="reveal-text">Our mission: deliver a personalised learning suite — powered by multi-agent agentic AI systems — that transforms how modern educational institutions teach, manage, and develop every student. Built for schools that intend to lead. Designed for an era that no legacy system was built to serve.</p>
+                    <p class="reveal-text">We do not aim to be ahead of the competition. We aim to be operating in a different dimension entirely.</p>
+                </div>
+            </div>
+            <div class="company-system-diagram reveal-card" aria-hidden="true"><span>Vision</span><span>AI-native infrastructure</span><span>Institutional transformation</span></div>
+        </section>
+
+        <section class="company-section" id="our-values" data-section="our-values">
+            <div class="company-section__header"><span class="company-kicker reveal-text">Our Values</span><h2 class="company-heading reveal-text">Our Values</h2></div>
+            <div class="company-values">
+                <article class="company-value-card reveal-card"><h3>Commitment — held without condition</h3><p>We do not uncommit from what we deliver. A commitment made at tinker is a commitment kept — regardless of circumstance, pressure, or difficulty. This is not policy. It is character.</p><blockquote><p><em>"O you who have believed, fulfil your obligations."</em></p><cite>— Surah Al-Ma'idah, 5:1</cite></blockquote></article>
+                <article class="company-value-card reveal-card"><h3>Honesty — without exception</h3><p>We are honest in what we say, what we build, and what we promise. We do not misrepresent our capabilities, our state, or our purpose. We do not spread what is false.</p><blockquote><p><em>"O you who have believed, fear Allah and speak words of appropriate justice."</em></p><cite>— Surah Al-Ahzab, 33:70</cite></blockquote></article>
+                <article class="company-value-card reveal-card"><h3>Truth — as a principle, not a convenience</h3><p>We never lie. Not to institutions, not to partners, not to ourselves. The moment a company loses its relationship with truth, it loses everything that follows.</p><blockquote><p><em>"And mix not truth with falsehood, nor conceal the truth while you know."</em></p><cite>— Surah Al-Baqarah, 2:42</cite></blockquote></article>
+                <article class="company-value-card reveal-card"><h3>Purpose — as a compass</h3><p>We are purpose-driven in the strictest sense. Every product decision, every conversation, every hire — filtered through the question: does this serve the child, serve the vision, serve what we were built to do?</p></article>
+                <article class="company-value-card reveal-card"><h3>Accountability — inward, not outward</h3><p>We reflect honestly on our performance. We do not protect our image at the cost of our integrity. When we fall short, we acknowledge it and return to the standard.</p><blockquote><p><em>"Indeed, Allah orders justice and good conduct and giving to relatives and forbids immorality and bad conduct and oppression."</em></p><cite>— Surah An-Nahl, 16:90</cite></blockquote></article>
+            </div>
+        </section>
+
+        <section class="company-section company-section--leadership" id="leadership-governance" data-section="leadership-governance">
+            <div class="company-section__header">
+                <span class="company-kicker reveal-text">Leadership and Governance</span>
+                <h2 class="company-heading reveal-text">Leadership and Governance</h2>
+            </div>
+            <div class="company-section__grid">
+                <div class="company-section__intro">
+                    <div class="company-leader-card reveal-card">
+                        <figure class="company-leader-portrait"><img src="src/assets/founder-syed.png" alt="Syed Raza A. Abidi"></figure>
+                        <h3>Syed Raza A. Abidi</h3>
+                        <p>Founder &amp; Chief Executive Officer</p>
+                        <a href="https://linkedin.com/in/raza-abdi">linkedin.com/in/raza-abdi</a>
+                    </div>
+                </div>
+                <div class="company-copy">
+                    <p class="reveal-text">A polymath by disposition — spanning AI systems architecture, educational policy, product design, and institutional governance. Syed founded tinker not as a commercial venture, but as a mission with infrastructure built around it.</p>
+                    <p class="reveal-text">He holds full executive authority across the organisation — from platform design and AI model governance, to policy architecture, institutional partnerships, and strategic vision. There is no board, no external governance body. The company is run with clarity of command and singularity of purpose.</p>
+                    <p class="reveal-text">His role spans:</p>
+                    <ul class="company-list reveal-card"><li>Executive vision and founding principles</li><li>AI system design and governance policy</li><li>Platform architecture and product direction</li><li>B2B institutional relationships and strategic positioning</li><li>Technology novelty and research direction</li></ul>
+                    <p class="reveal-text">tinker's governance model is built for precision, not process. Authority is clear. Decision cycles are short. Accountability flows directly.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="company-section company-section--principles" id="guiding-principles" data-section="guiding-principles">
+            <div class="company-section__header"><span class="company-kicker reveal-text">tinker's Guiding Principles</span><h2 class="company-heading reveal-text">tinker's Guiding Principles</h2><p class="company-subhead reveal-text">These are not aspirational statements. They are operational commitments.</p></div>
+            <div class="company-principles">
+                <article class="company-principle reveal-card"><p><strong>We never uncommit from what we deliver.</strong></p><p>Once a commitment is made to an institution, a partner, or a team — it is held.</p></article>
+                <article class="company-principle reveal-card"><p><strong>We are never dishonest — under any circumstance.</strong></p><p>No version of company pressure, competitive threat, or commercial difficulty justifies departing from honesty.</p></article>
+                <article class="company-principle reveal-card"><p><strong>The child is the work.</strong></p><p>Every system we build exists to nurture, develop, and unlock the potential of the student — not to manage processes for its own sake.</p></article>
+                <article class="company-principle reveal-card"><p><strong>We do not lie. We do not spread falseness.</strong></p><p>In our communications, our product claims, our institutional representations — accuracy is non-negotiable.</p></article>
+                <article class="company-principle reveal-card"><p><strong>We are rigorously principle-oriented.</strong></p><p>Not selectively. Not conveniently. Rigorously.</p></article>
+                <article class="company-principle reveal-card"><p><strong>We are purpose-driven.</strong></p><p>The vision is not a sentence on the website. It is the criterion by which every decision is evaluated.</p></article>
+            </div>
+        </section>
+
+        <section class="company-section company-section--learning" id="student-learning" data-section="student-learning">
+            <div class="company-bg company-bg--network" data-parallax="0.14"></div>
+            <div class="company-section__grid">
+                <div class="company-section__intro"><span class="company-kicker reveal-text">How We See Student Learning</span><h2 class="company-heading reveal-text">How We See Student Learning</h2></div>
+                <div class="company-copy"><p class="reveal-text">Knowledge is not a service. It is a fundamental source — of identity, of direction, of purpose.</p><p class="reveal-text">We see students learning across every discipline: science, mathematics, language, history, technology. Not for the world alone, but as people who exist within the world with a reason for being in it. When knowledge is purposeful, it transforms. When it is acquired with intention — tied to truth, tied to something greater than career output — it produces people who are genuinely capable. People who think, who question, who build.</p><p class="reveal-text">tinker's view of learning is whole. The student is not a data point. They are a person — with curiosity, with capacity, with a life ahead of them that knowledge should illuminate, not just credential.</p></div>
+            </div>
+            <div class="company-learning-map reveal-card" aria-hidden="true"><span>Science</span><span>Mathematics</span><span>Language</span><span>History</span><span>Technology</span><span>Religion</span><span>Ethics</span></div>
+        </section>
+
+        <section class="company-section company-section--matters" id="what-matters" data-section="what-matters">
+            <div class="company-section__header"><span class="company-kicker reveal-text">What Matters to Us</span><h2 class="company-heading reveal-text">What Matters to Us</h2></div>
+            <div class="company-copy company-copy--wide"><p class="company-emphasis reveal-text">The child. Their curiosity. Their capacity to grow.</p><p class="reveal-text">tinker exists to serve that — at scale, without compromise. We do this through a unified personalised learning suite built entirely AI-native from the ground up.</p><p class="reveal-text"><strong>tinker World</strong> — our school management system — brings institutional infrastructure into full digital coherence: operations, administration, governance, and communication, unified in a single intelligent platform.</p><p class="reveal-text"><strong>tinker Kids</strong> — our personalised learning platform — delivers adaptive, student-level intelligence. Every learner receives a learning path shaped around their cognition, their pace, their demonstrated strengths and gaps.</p><p class="reveal-text">Together, they operate as a suite — one coherent system for the modern educational institution.</p><p class="reveal-text">At the intelligence layer: <strong>Quasar-3</strong>, our proprietary cognitive AI model, and the <strong>ALI-ACE personalised learning algorithm</strong> — built in-house, purpose-designed for how students actually learn.</p></div>
+        </section>
+
+        <section class="company-section company-section--schools" id="philosophy-schools" data-section="philosophy-schools">
+            <div class="company-section__grid"><div class="company-section__intro"><span class="company-kicker reveal-text">Our Philosophy Among Schools</span><h2 class="company-heading reveal-text">Our Philosophy Among Schools</h2></div><div class="company-copy company-timeline"><p class="reveal-text">tinker does not deploy to institutions. It partners with them.</p><p class="reveal-text">We work with schools that have made a deliberate decision — that legacy systems are not sufficient, that the next generation of students requires something structurally different, and that they are ready to transform at the institutional level.</p><p class="reveal-text">When a school joins tinker, they are not purchasing software. They are integrating an educational intelligence infrastructure — one that reshapes how teaching is delivered, how administration operates, how student progress is tracked, and how decisions are made.</p><p class="reveal-text">We support schools through every stage: system integration, staff orientation, AI governance alignment, and ongoing institutional intelligence reporting. The relationship does not end at deployment.</p><p class="reveal-text">Schools that operate with tinker operate differently. That is the point.</p></div></div>
+        </section>
+
+        <section class="company-section company-section--way" id="tinker-way" data-section="tinker-way">
+            <div class="company-section__header"><span class="company-kicker reveal-text">The tinker Way — A Redefined Approach</span><h2 class="company-heading reveal-text">The tinker Way — A Redefined Approach</h2></div>
+            <div class="company-architecture reveal-card" aria-hidden="true"><div>Quasar-3</div><div>ALI-ACE</div><div>Institutional System</div></div>
+            <div class="company-way-grid">
+                <article class="company-tech-card reveal-card"><h3>Quasar-3: Cognitive AI at the Core</h3><p>Quasar-3 is tinker's proprietary AI model — built not as a general-purpose language model, but as a purpose-designed cognitive system for educational contexts. It understands how students construct understanding, identifies where cognition breaks down, and responds at the level of the individual learner.</p><p>It does not deliver content. It delivers intelligence — distinguishing between a student who has memorised and a student who has understood, and routing accordingly.</p></article>
+                <article class="company-tech-card reveal-card"><h3>ALI-ACE: Personalised Learning Architecture</h3><p>The ALI-ACE algorithm is the personalisation layer — an adaptive learning intelligence engine that maps each student's cognitive profile across subjects, tracks learning velocity, identifies systemic gaps, and constructs individualised learning paths in real time.</p><p>ALI-ACE does not personalise at the surface level. It operates at the level of how a specific student, with a specific cognitive pattern, processes and retains specific types of information. That is the level at which meaningful personalisation occurs.</p></article>
+                <article class="company-tech-card company-tech-card--wide reveal-card"><h3>How They Work Together</h3><p>Quasar-3 provides the cognitive intelligence. ALI-ACE provides the learning architecture. Together, within a multi-agent agentic AI system, they produce something genuinely novel: a learning environment that continuously adapts, at the student level, within the institutional framework — without requiring teacher-by-teacher intervention at every point.</p><p>The result is an institution where personalised learning is not a feature. It is the operating model.</p></article>
+            </div>
+        </section>
+
+        <section class="company-section company-section--impact" id="impact" data-section="impact">
+            <div class="company-section__grid"><div class="company-section__intro"><span class="company-kicker reveal-text">Impact</span><h2 class="company-heading reveal-text">Impact</h2></div><div class="company-copy"><p class="reveal-text">tinker is at the start of its institutional journey. Formal testimonials are not yet available.</p><p class="reveal-text">What is available: a system built with intention, rigour, and an infrastructure designed for long-term measurable outcomes. The impact we speak to is architectural — built into how the platform operates, not extracted from case studies after the fact.</p><p class="reveal-text">We invite institutions to evaluate the system directly. The capability speaks for itself.</p></div></div>
+            <div class="company-readiness reveal-card" aria-hidden="true"><span>Intention</span><span>Rigour</span><span>Infrastructure</span><span>Measurable outcomes</span></div>
+        </section>
+
+        <section class="company-section company-section--contact" id="office-contact" data-section="office-contact">
+            <div class="company-contact-card reveal-card"><span class="company-kicker">Office &amp; Contact</span><h2 class="company-heading">Office &amp; Contact</h2><div class="company-contact-grid"><div><h3>Corporate Enquiries</h3><a href="mailto:corporate@tinker.ai">corporate@tinker.ai</a></div><div><h3>Explore the System</h3><a href="contact.html">Schedule a Strategic Briefing</a><a href="start-learning.html">Request Institutional Access</a></div><div><h3>See the Platform in Action</h3><a href="features.html">Explore System Capabilities</a><a href="by-persona.html">View Use Cases</a></div></div></div>
+        </section>
+    </main>
 
     <script>
         const mobileToggle = document.getElementById('mobileToggle');
         const navbar = document.getElementById('navbar');
+        mobileToggle.dataset.companyInlineBound = 'true';
 
         mobileToggle.addEventListener('click', () => {
             if (navbar.classList.contains('active')) {
@@ -3094,5 +3412,117 @@
             revealItems.forEach(item => observer.observe(item));
         })();
     </script>
+    <!-- Footer Section -->
+    <footer class="site-footer" id="siteFooter">
+        <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="arcGradient" x1="0%" y1="0%" x2="200%" y2="0%">
+                    <stop offset="0%" stop-color="#0099FD" />
+                    <stop offset="33%" stop-color="#30C70B" />
+                    <stop offset="66%" stop-color="#FEC000" />
+                    <stop offset="100%" stop-color="#0099FD" />
+                    <animate attributeName="x1" from="0%" to="-200%" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="x2" from="200%" to="0%" dur="2s" repeatCount="indefinite" />
+                </linearGradient>
+            </defs>
+            <!-- Blurred glowing path that tracks the gradient perfectly -->
+            <path id="arcGlow" class="arc-glow" d="M0,100 C480,0 960,0 1440,100" />
+            <!-- Smooth sine wave curve similar to the image -->
+            <path id="arcPath" class="arc-main" d="M0,100 C480,0 960,0 1440,100" />
+        </svg>
+        <div class="footer-container">
+            <div class="footer-top-grid">
+                <div class="footer-column reveal-item">
+                    <h4 class="footer-heading"><span class="heading-text"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Literacy</span></h4>
+                    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+                        <a href="visit-the-academy.html" class="footer-link">Visit the Academy</a>
+                        <a href="teachers-guide.html" class="footer-link">Teachers Guide</a>
+                        <a href="admin-guide.html" class="footer-link">Admin Guides</a>
+                        <a href="parents-alumni-guide.html" class="footer-link">Parents and Alumni Guide</a>
+                        <a href="students-guide.html" class="footer-link">Students Guide</a>
+                        <a href="free-resources.html" class="footer-link">Free Resources</a>
+                    </div>
+                </div>
+                <div class="footer-column reveal-item" style="transition-delay: 0.1s">
+                    <h4 class="footer-heading"><span class="heading-text">Uses</span></h4>
+                    <h5 class="footer-sub-heading">By persona</h5>
+                    <div class="footer-sub-links">
+                        <a href="decision-makers.html" class="footer-link">Decision-makers</a>
+                        <a href="teachers.html" class="footer-link">Teachers</a>
+                        <a href="students.html" class="footer-link">Students</a>
+                        <a href="admins.html" class="footer-link">Admin</a>
+                    </div>
+                    <a href="for-schools.html" class="footer-link" style="color: #000; font-weight: 700; margin-bottom: 20px;">For Schools</a>
+                    <br>
+                    <a href="for-learning.html" class="footer-link" style="color: #000; font-weight: 700;">For Learning</a>
+                </div>
+                <div class="footer-column reveal-item" style="transition-delay: 0.2s">
+                    <h4 class="footer-heading"><span class="heading-text">Products & Platform</span>
+                        <!-- Arrow down -->
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" style="margin-left: 4px;">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </h4>
+                    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+                        <a href="tinker-world.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> World</a>
+                        <a href="tinker-kids.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Kids</a>
+                        <a href="tinker-ai-governance.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> AI and AI Governance</a>
+                        <a href="security-user-safety.html" class="footer-link">Security and Users Safety</a>
+                        <a href="privacy-data-protection.html" class="footer-link">Privacy and Data Protection</a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="footer-divider reveal-item" style="transition-delay: 0.3s">
+
+            <div class="footer-bottom-grid reveal-item" style="transition-delay: 0.4s">
+                <div class="footer-bottom-left">
+                    <img src="src/assets/images/Tinker Logo-17.svg" class="footer-logo-img" alt="Tinker Logo" style="height: 150px; width: auto; margin-left: -30px; transition: transform 0.4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    
+                </div>
+                <div class="footer-bottom-links">
+                    <div class="footer-links-col">
+                        <a href="contact.html" class="footer-link">Contact Us</a>
+                        <a href="press-releases.html" class="footer-link">Press Releases</a>
+                        <a href="newsroom.html" class="footer-link">Newsroom</a>
+                    </div>
+                    <div class="footer-links-col">
+                        <a href="help-faqs.html" class="footer-link">Help and FAQs</a>
+                        <a href="blogs.html" class="footer-link">Blogs</a>
+                        <a href="careers.html" class="footer-link">Careers</a>
+                    </div>
+                    <div class="footer-links-col">
+                        <a href="terms.html" class="footer-link">Terms of Service</a>
+                        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                                            </div>
+                </div>
+                
+            <div class="footer-bottom-bar" style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 20px;">
+    <div class="copyright-text" style="font-size: 0.85rem; color: #888; text-align: left;">
+        &copy; 2026 <span style="font-family: 'Baloo 2', sans-serif !important; color: #444; font-weight: 500; font-size: 1.15em;">tinker</span>. All Rights Reserved.
+    </div>
+    <div class="social-pill">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 1.926-6.98 6.26-.058 1.281-.072 1.688-.072 4.948s.014 3.666.072 4.947c.2 4.358 2.618 6.781 6.98 6.98 1.281.058 1.689.072 4.947.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-1.926 6.979-6.26.059-1.281.073-1.689.073-4.947 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.015 3.015 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                    </div>
+                  
+</div>
+</div>
+        </div>
+    </footer>
+
 </body>
 </html>

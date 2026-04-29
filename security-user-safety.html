@@ -3,283 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinker | Press Releases</title>
+    <title>tinker | Security and User Safety</title>
     <link rel="icon" type="image/png" href="src/assets/images/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Global Styles -->
     <style>
-        :root {
-            --nav-bg: rgba(255, 255, 255, 0.65);
-            --text-color: #000000;
-            --hover-color: #0099FD;
-            --glass-blur: 50px;
-            --accent1: #0099FD;
-            --accent2: #30C70B;
-            --accent3: #FEC000;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-
-        /* Ambient background for glassmorphism */
-        body::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle, rgba(0,153,253,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(48,199,11,0.03) 0%, rgba(255,255,255,0) 70%);
-            z-index: -1;
-        }
-
-        /* Navbar Styling */
-        .navbar-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding-top: 2rem;
-            z-index: 10;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            opacity: 0;
-            transform: translateY(-50px) scale(0.9);
-        }
-
-        @media (min-width: 769px) {
-            .navbar-wrapper {
-                box-sizing: border-box;
-                padding-left: 120px;
-                padding-right: 120px;
-            }
-
-            .navbar {
-                max-width: min(1100px, calc(100vw - 420px));
-            }
-        }
-
-        @keyframes smoothPopDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .navbar {
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            position: relative;
-            overflow: visible;
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            transform-style: preserve-3d;
-            will-change: width, height, border-radius, transform;
-        }
-
-        .nav-item {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 30px;
-            position: relative;
-            transition: color 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            cursor: pointer;
-        }
-
-        .nav-item:hover,
-        .nav-item.active {
-            color: var(--hover-color);
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.4);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.03);
-            border-radius: 30px;
-        }
-
-        /* Logo Glass Container */
-        .logo-glass {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            backdrop-filter: blur(50px) saturate(250%);
-            -webkit-backdrop-filter: blur(50px) saturate(250%);
-            background: rgba(255, 255, 255, 0.5);
-            box-shadow: 
-                0 40px 80px rgba(0, 0, 0, 0.07), 
-                0 15px 35px rgba(0, 0, 0, 0.03),
-                inset 0 1.5px 0 rgba(255, 255, 255, 0.9), 
-                inset 0 -1.5px 0 rgba(255, 255, 255, 0.3);
-            opacity: 0;
-            animation: smoothPopDown 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            animation-delay: 0.1s;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            text-decoration: none;
-        }
-
-        .logo-glass:hover {
-            transform: translateY(-2px) scale(1.05);
-        }
-
-        .logo-glass img {
-            height: 48px;
-            width: auto;
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-            transform: scale(1.15);
-        }
-
-        /* Main Content */
-        .main-content {
-            position: relative;
-            z-index: 1;
-            padding-top: 7.5rem;
-            min-height: 100vh;
-        }
-
-        .content-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Page Content */
-        .page-section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .page-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin: 0 0 2rem;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent3));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientScroll 3s linear infinite;
-        }
-
-        @keyframes gradientScroll {
-            0% { background-position: 0% center; }
-            100% { background-position: -200% center; }
-        }
-
-        .page-description {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.7);
-            max-width: 600px;
-            margin: 0 auto 3rem;
-        }
-
-        .coming-soon-card {
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
-            margin: 2rem auto;
-        }
-
-        .coming-soon-title {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 0 1rem;
-            color: var(--accent1);
-        }
-
-        .coming-soon-text {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .logo-glass {
-                top: 1.5rem;
-                left: 1.5rem;
-                width: 56px;
-                height: 56px;
-            }
-
-            .logo-glass img {
-                height: 38px;
-            }
-
-            .navbar-wrapper {
-                padding-top: 1.5rem;
-            }
-
-            .page-section {
-                padding: 2rem 1rem;
-            }
-
-            .coming-soon-card {
-                margin: 1rem auto;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #ffffff; font-family: 'Montserrat', sans-serif; }
     </style>
     <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/security-user-safety.css">
     <script src="src/js/global-nav.js" defer></script>
-
+    <script src="src/js/security-user-safety.js" type="module" defer></script>
 
 </head>
 <body>
@@ -300,8 +34,8 @@
     <!-- Center Navbar -->
     <div class="navbar-wrapper">
         <nav class="navbar" id="navbar">
-            <a href="index.html" class="nav-item active"><span class="nav-text">Home</span></a>
-            <div class="nav-item products-dropdown">
+            <a href="index.html" class="nav-item"><span class="nav-text">Home</span></a>
+            <div class="nav-item products-dropdown active">
                 <span class="nav-text">Products</span>
                 <div class="dropdown-arrow"></div>
                 <div class="products-dropdown-panel">
@@ -447,26 +181,195 @@
             </div>
         </nav>
     </div>
+    <main class="security-page" id="security-top">
+        <div class="security-progress" aria-hidden="true"><span class="security-progress__bar"></span></div>
+        <div class="security-state" aria-hidden="true"><span>System Integrity: Verified</span></div>
 
-    <main class="main-content">
-        <div class="content-wrapper">
-            <section class="page-section">
-                <h1 class="page-title">Press Releases</h1>
-                <p class="page-description">
-                    Stay updated with the latest announcements, milestones, and news from tinker. 
-                    Our press releases provide insights into our mission to transform education through AI-powered learning.
-                </p>
-                
-                <div class="coming-soon-card">
-                    <h3 class="coming-soon-title">Coming Soon</h3>
-                    <p class="coming-soon-text">
-                        Our press releases section is currently under development. 
-                        Check back soon for the latest updates and announcements from tinker.
-                    </p>
+        <nav class="security-rail" aria-label="Security page sections">
+            <a href="#security-is-not-a-feature" class="security-rail__link active">01</a>
+            <a href="#security-architecture" class="security-rail__link">02</a>
+            <a href="#infrastructure-integrity" class="security-rail__link">03</a>
+            <a href="#identity-access" class="security-rail__link">04</a>
+            <a href="#student-safety" class="security-rail__link">05</a>
+            <a href="#parent-visibility" class="security-rail__link">06</a>
+            <a href="#teacher-admin-security" class="security-rail__link">07</a>
+            <a href="#data-responsibility" class="security-rail__link">08</a>
+            <a href="#ai-safety" class="security-rail__link">09</a>
+            <a href="#monitoring-auditing-response" class="security-rail__link">10</a>
+            <a href="#compliance-alignment" class="security-rail__link">11</a>
+            <a href="#security-continuous" class="security-rail__link">12</a>
+            <a href="#trust-enforced" class="security-rail__link">13</a>
+            <a href="#explore-further" class="security-rail__link">14</a>
+        </nav>
+
+        <section class="security-section security-hero" id="security-is-not-a-feature" data-security-stage="assertion">
+            <div class="security-hero__scene" id="securityHeroScene" aria-hidden="true">
+                <div class="security-boundary-fallback"><span></span><span></span><span></span></div>
+            </div>
+            <div class="security-hero__content">
+                <span class="security-kicker security-reveal">tinker — Security &amp; User Safety</span>
+                <h1 class="security-title security-reveal">Security Is Not a Feature</h1>
+                <p class="security-statement security-reveal">It is the system boundary.</p>
+                <div class="security-copy security-copy--lead">
+                    <p class="security-reveal">Every institution that operates on tinker entrusts us with something that has no substitute: the integrity of their data, the safety of their students, and the reliability of a system they depend on every day. That is not a responsibility we acknowledge in a policy document and set aside. It is the constraint that shapes how every part of the system is designed.</p>
+                    <p class="security-reveal">Security is not layered onto tinker after functionality is built. It defines how functionality is allowed to exist. From infrastructure to application logic, from identity access to AI outputs — every layer operates within enforced security constraints. There is no part of the system where security is optional.</p>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
+
+        <section class="security-section" id="security-architecture" data-security-stage="structure">
+            <div class="security-section__grid">
+                <div class="security-section__intro">
+                    <span class="security-kicker security-reveal">Security by Architecture</span>
+                    <h2 class="security-heading security-reveal">Controlled, isolated, governed.</h2>
+                </div>
+                <div class="security-layer-stack security-reveal-card" aria-hidden="true">
+                    <span>User Layer</span><span>Access Layer</span><span>Validation Layer</span><span>Core System</span>
+                </div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">tinker operates as a controlled, isolated, and governed system.</p>
+                <p class="security-reveal">Each institution runs within a logically isolated environment. No cross-institutional data exposure is structurally possible. No shared data layers create points of compromise. No system interaction occurs outside defined and enforced boundaries.</p>
+                <p class="security-reveal">Infrastructure is deployed with segmented architecture, strict access control layers, and controlled entry points. There is no open surface. Every interaction is authenticated. Every request is validated. Every system action is logged.</p>
+                <p class="security-reveal">This is not a configuration choice. It is the architecture.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="infrastructure-integrity" data-security-stage="structure">
+            <div class="security-section__header"><span class="security-kicker security-reveal">Infrastructure Integrity</span><h2 class="security-heading security-reveal">Resilience, isolation, and control.</h2></div>
+            <div class="security-server-grid security-reveal-card" aria-hidden="true"><span>Institution A</span><span>Institution B</span><span>Institution C</span><span>Institution D</span></div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Resilience, isolation, and control — these are the infrastructure standards tinker is built against.</p>
+                <p class="security-reveal">Dedicated or logically isolated server environments per institution. Encrypted data storage at rest and in transit. Controlled network ingress through secured gateways. DDoS mitigation and traffic anomaly detection. Continuous system monitoring and intrusion detection running at all times.</p>
+                <p class="security-reveal">The system does not rely on implicit trust. It operates on zero-trust principles — every component must verify before interacting, regardless of where it sits within the architecture.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="identity-access" data-security-stage="structure">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">Identity and Access Control</span><h2 class="security-heading security-reveal">Access is explicitly granted.</h2></div>
+                <div class="security-permission-tree security-reveal-card" aria-hidden="true"><span>Admin</span><span>Teacher</span><span>Class A</span><span>Class B</span><span>Parent</span><span>Student</span><em>Blocked path</em></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Access is not assumed. It is explicitly granted.</p>
+                <p class="security-reveal">tinker enforces role-based access control across every user type in the system: students, teachers, administrators, parents, and institutional coordinators. Each role operates within strictly defined permissions — with no pathway to exceed them.</p>
+                <p class="security-reveal">Students cannot access administrative controls. Parents cannot modify student records. Teachers operate within their assigned curriculum and class boundaries. Administrators govern system-level configurations within the boundaries the institution has set.</p>
+                <p class="security-reveal">Session controls, authentication tokens, and access scopes are continuously validated. Session hijacking, unauthorised access, and privilege escalation are not edge cases to be responded to — they are architectural conditions to be prevented.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="student-safety" data-security-stage="human">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">Student Safety — Structural, Not Discretionary</span><h2 class="security-heading security-reveal">Student safety is system-level.</h2></div>
+                <div class="security-shield security-reveal-card" aria-hidden="true"><span>Curriculum-bound</span><span>Age-constrained</span><span>Guardrails</span><span>No open browsing</span></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Student safety is enforced at the system level. It is not left to user behaviour, content moderation after the fact, or platform guidelines that can be circumvented.</p>
+                <p class="security-reveal">AI outputs are curriculum-bound and age-constrained. There is no exposure to external, unverified content sources. There is no open browsing environment within the learning system. Behavioural guardrails govern every student interaction — not as settings that can be toggled, but as structural constraints that cannot be bypassed.</p>
+                <p class="security-reveal">Every interaction a student has within tinker is context-aware, age-appropriate, and institutionally aligned. The system does not permit deviation outside those constraints. This is enforced architecturally, not administratively.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="parent-visibility" data-security-stage="human">
+            <div class="security-section__header"><span class="security-kicker security-reveal">Parent Visibility — Controlled and Intentional</span><h2 class="security-heading security-reveal">Awareness without interference.</h2></div>
+            <div class="security-split-panel security-reveal-card" aria-hidden="true"><div>Student environment</div><div>Parent dashboard<br><strong>Read-only</strong></div></div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Parents are given controlled visibility into their child's learning environment — not system access.</p>
+                <p class="security-reveal">A separate parent login tied to student identity provides read-only access to progress, performance, and learning insights. No ability to alter academic records. No ability to modify system configurations. The relationship is intentional: awareness without interference, visibility without compromise to system integrity.</p>
+                <p class="security-reveal">Parents know what they need to know. The system remains governed by the institution.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="teacher-admin-security" data-security-stage="human">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">Teacher and Administrator Security</span><h2 class="security-heading security-reveal">Secured operational boundaries.</h2></div>
+                <div class="security-dashboard security-reveal-card" aria-hidden="true"><span>Role scope</span><span>Assignment boundary</span><span>Audit visibility</span><span>Policy enforcement</span></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Educators and administrators operate within secured operational boundaries.</p>
+                <p class="security-reveal">Access to student data is controlled based on role and active assignment — a teacher sees the students they teach, not the institution's entire record. Communication channels within the platform are protected. There is no exposure to unauthorised institutional data at any role level.</p>
+                <p class="security-reveal">Administrative controls include policy enforcement layers, access management tools, and audit visibility across all system usage. No action is untracked. No access is unverified. Every administrative decision leaves a record.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="data-responsibility" data-security-stage="intelligence">
+            <div class="security-section__header"><span class="security-kicker security-reveal">Data Responsibility</span><h2 class="security-heading security-reveal">Student data is responsibility.</h2></div>
+            <div class="security-data-pipeline security-reveal-card" aria-hidden="true"><span>Input</span><span>Validation</span><span>Encryption</span><span>Storage</span></div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Student data is not a resource. It is a responsibility — and tinker treats it as such without exception.</p>
+                <p class="security-reveal">Minimal collection: only what the system requires to function. Purpose-bound processing: data is never used outside its defined scope. No third-party selling. No sharing for external use. No usage for AI training outside the institution's own environment. Institutional ownership: the data belongs to the school, not to tinker.</p>
+                <p class="security-reveal">All sensitive data is encrypted at rest. All data in transit is encrypted. Access is governed by controlled policies with no open pathways. There is no ambiguity in how data is handled because there is no ambiguity in how data is governed.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="ai-safety" data-security-stage="intelligence">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">AI Safety and Output Control</span><h2 class="security-heading security-reveal">AI is constrained architecturally.</h2></div>
+                <div class="security-ai-core security-reveal-card" aria-hidden="true"><span>Validation</span><span>Context</span><span>Behaviour</span><strong>AI Core</strong></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">AI within tinker operates under strict governance constraints — not as a policy position, but as an architectural one.</p>
+                <p class="security-reveal">No unrestricted generation. No exposure to unsafe or irrelevant content. No deviation from curriculum-aligned logic. Every AI output passes through validation layers, context enforcement systems, and behavioural safety constraints before it reaches a student, teacher, or administrator.</p>
+                <p class="security-reveal">The system does not generate beyond what it is authorised to generate. This is not a soft rule subject to interpretation. It is enforced at the architecture level — the same level at which all other security constraints operate.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="monitoring-auditing-response" data-security-stage="governance">
+            <div class="security-section__header"><span class="security-kicker security-reveal">Monitoring, Auditing, and Response</span><h2 class="security-heading security-reveal">Continuously enforced.</h2></div>
+            <div class="security-monitor security-reveal-card" aria-hidden="true"><span>Access logs</span><span>Anomaly detection</span><span>Traceability</span><span>Escalation paths</span></div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Security is continuously enforced. Not periodically reviewed. Not triggered by incidents.</p>
+                <p class="security-reveal">Real-time system monitoring. Behavioural anomaly detection. Access log tracking across every role. Controlled incident response protocols with defined escalation paths. All system activity is logged, traceable, and auditable from the moment it occurs.</p>
+                <p class="security-reveal">If deviation occurs — in access behaviour, system output, or data handling — it is detected early, isolated immediately, and addressed systematically. The system does not wait to be told something is wrong.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="compliance-alignment" data-security-stage="governance">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">Compliance and Institutional Alignment</span><h2 class="security-heading security-reveal">Institutional framework first.</h2></div>
+                <div class="security-compliance-map security-reveal-card" aria-hidden="true"><span>Pakistan context</span><span>Enterprise standard</span><span>Institution policy</span><span>Configuration authority</span></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">tinker operates within Pakistan's regulatory context. Our internal standards, however, are built to meet enterprise-grade global expectations — because the institutions we serve, and the students within them, deserve that standard regardless of geography.</p>
+                <p class="security-reveal">Institutions retain configuration authority, policy alignment control, and full visibility into system operations. tinker adapts to the institution's governance framework. Not the other way around.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="security-continuous" data-security-stage="governance">
+            <div class="security-section__header"><span class="security-kicker security-reveal">Security Is Continuous</span><h2 class="security-heading security-reveal">A discipline maintained.</h2></div>
+            <div class="security-cycle security-reveal-card" aria-hidden="true"><span>Monitor</span><span>Detect</span><span>Respond</span><span>Improve</span></div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">Security is not a state we reach. It is a discipline we maintain.</p>
+                <p class="security-reveal">Regular system evaluations. Controlled updates and patches. Ongoing architecture hardening. Continuous improvement cycles tied to both internal performance standards and the evolving threat landscape. The system evolves. The security evolves with it — under the same governance structure, with the same rigour.</p>
+            </div>
+        </section>
+
+        <section class="security-section" id="trust-enforced" data-security-stage="trust">
+            <div class="security-section__grid">
+                <div class="security-section__intro"><span class="security-kicker security-reveal">Trust, Enforced</span><h2 class="security-heading security-reveal">We do not ask institutions to trust tinker.</h2></div>
+                <div class="security-trust-map security-reveal-card" aria-hidden="true"><span>Controlled behaviour</span><span>Transparent architecture</span><span>Responsible data</span><span>System integrity</span></div>
+            </div>
+            <div class="security-copy security-copy--wide">
+                <p class="security-reveal">We build systems where trust is the natural outcome of controlled behaviour, transparent architecture, responsible data handling, and measurable system integrity.</p>
+                <p class="security-reveal">Security is not visible because it is advertised. It is visible because nothing breaks, nothing leaks, and nothing behaves outside its defined boundary.</p>
+                <p class="security-reveal">That is the standard. It is not negotiated.</p>
+            </div>
+        </section>
+
+        <section class="security-section security-section--cta" id="explore-further" data-security-stage="trust">
+            <div class="security-cta-card security-reveal-card">
+                <span class="security-kicker">Explore Further</span>
+                <h2 class="security-heading">Explore Further</h2>
+                <div class="security-cta-links">
+                    <a href="privacy-data-protection.html">Understand how data is handled → Privacy &amp; Data Protection</a>
+                    <a href="tinker-ai-governance.html#ai-governance-standard">Review AI control systems → AI Governance</a>
+                    <a href="contact.html">Evaluate institutional deployment → Request Security Briefing</a>
+                </div>
+                <div class="security-cta-actions"><a href="mailto:corporate@tinker.ai">corporate@tinker.ai</a><span>|</span><a href="contact.html" id="securityBehaviorCta">Schedule a Strategic Briefing</a></div>
+            </div>
+        </section>
     </main>
+
     <!-- Footer Section -->
     <footer class="site-footer" id="siteFooter">
         <svg class="footer-arc" viewBox="0 0 1440 100" preserveAspectRatio="none">
@@ -522,7 +425,7 @@
                         <a href="tinker-world.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> World</a>
                         <a href="tinker-kids.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> Kids</a>
                         <a href="tinker-ai-governance.html" class="footer-link"><span style="font-family: 'Baloo 2', sans-serif !important; font-weight: 500; font-size: 1.15em;">tinker</span> AI and AI Governance</a>
-                        <a href="security-user-safety.html" class="footer-link">Security and Users Safety</a>
+                        <a href="security-user-safety.html#security-is-not-a-feature" class="footer-link">Security and Users Safety</a>
                         <a href="privacy-data-protection.html" class="footer-link">Privacy and Data Protection</a>
                     </div>
                 </div>
